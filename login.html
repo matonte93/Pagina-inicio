@@ -14,18 +14,28 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <style>
-    html, body{
+    /* html,
+    body {
       height: 100%;
-    }
+    } */
+
+    /* .text-center {
+      margin: 0%;
+      font-family: sans-serif;
+      background-color: #53C0FB;
+    } */
 
     body {
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-align: center;
-      align-items: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
-      background-color: #f5f5f5;
+      /* margin: 0%;
+      padding: 0%; */
+      font-family: sans-serif;
+      /* display: -ms-flexbox;
+      display: flex; */
+      /* -ms-flex-align: center;
+      align-items: center; */
+      /* padding-top: 40px;
+      padding-bottom: 40px; */
+      background-color: rgba(247, 247, 247, 0.61);
     }
 
     .signin {
@@ -34,20 +44,65 @@
       padding: 15px;
       margin: auto;
     }
+
+    img{
+      text-align: center;
+      display: block;
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-left: auto;
+      margin-right: auto;
+      }
+
+      .login h1{
+        margin: 0%;
+        text-align: center;
+        padding: 0 0 20px;
+      }
+      .login label{
+        padding: 0 0 10px;
+      }
+      .login a{
+        padding-top: 50px;
+      }
+
+    .login 
+
   </style>
 </head>
 
 <body class="text-center">
+
+  <img class="img-login" src="img/login.png" alt="e-mercado">
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
+    <h1 class="title-login">Login Here</h1>
+    <form class="login" method="POST" action="index.html">
+
+      <!--Ingreso de Usuario-->
+      <label for="username">Username</label>
+      <input type="text" placeholder="Enter Username" required>
+      <br>
+      <!--Ingreso de contraseña-->
+      <label for="password">Password</label>
+      <input type="password" placeholder="Enter Password" required>
+<br>
+      <input type="submit" value="Login In">
+<br>
+<br>
+      <a class="login-rec" href="">Lost your password?</a>
+      <br>
+      <a class="login-rec" href="">Don't have an account?</a>
+
+    </form>
+    <!-- <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h4 class="alert-heading">¡A trabajar! :)</h4>
       <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 08/08/2021).</p>
       <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p> -->
   </div>
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
 </body>
+
 </html>
