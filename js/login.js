@@ -14,7 +14,6 @@ const loggear = () => {
         document.getElementById("TxtPass").value = "";
         debugger;
         login.push({ username: username, password: password });
-
         localStorage.setItem("usuario", JSON.stringify(login));
         window.location.href = "index.html";
     } else {

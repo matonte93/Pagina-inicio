@@ -26,6 +26,7 @@
     } */
 
     body {
+      display: block;
       height: auto;
       margin: auto;
       padding: 0%;
@@ -53,18 +54,9 @@
       margin: auto;
     }
 
-    /* img {
-
-      float: inherit;
-      width: 80%;
-      text-align: center;
-      padding-right: 15px;
-
-    } */
-
-    #prin {}
 
     .login-form {
+      display: block;
       float: left;
       justify-content: left;
       text-align: center;
@@ -76,11 +68,12 @@
 
     .title-login {
       font-weight: bold;
-
+display: block;
     }
 
     .login-form input {
       width: 90%;
+      display: block;
       height: 20px;
       margin: 0.5rem;
     }
@@ -90,6 +83,7 @@
       border: none;
       background: rgb(100, 200, 255);
       cursor: pointer;
+      display: block;
     }
 
     .login label {
@@ -99,9 +93,9 @@
       display: block;
     }
 
-    .login a {
+    /* .login a {
       padding-top: 50px;
-    }
+    } */
   </style>
 </head>
 
@@ -113,15 +107,15 @@
         <h1 class="title-login">Registrate</h1>
 
         <!--Ingreso de Usuario-->
-        <label for="username">Username</label>
+        <label for="username">Usuario</label>
         <input id="TxtUser" type="text" placeholder="Ingrese Usuario" required>
         <!--Ingreso de contraseña-->
-        <label for="password">Password</label>
+        <label for="password">Contraseña</label>
         <input id="TxtPass" type="password" placeholder="Ingrese Contraseña" required>
 
-        <input id="BtnSubmit" type="button" value="Login In">
+        <input id="BtnSubmit" type="button" value="Ingresar">
 
-        <a class="login-rec" href="">Lost your password?</a>
+        <!-- <a class="login-rec" href="">Lost your password?</a> -->
 
 
       </form>
