@@ -11,7 +11,7 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
   <link href="css/styles.css" rel="stylesheet">
   <style>
     /* html,
@@ -26,9 +26,11 @@
     } */
 
     body {
-      /* margin: 0%;
-      padding: 0%; */
-      font-family: sans-serif;
+      margin: 0%;
+      padding: 0%;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      color: rgb(89, 201, 190);
       /* display: -ms-flexbox;
       display: flex; */
       /* -ms-flex-align: center;
@@ -45,52 +47,60 @@
       margin: auto;
     }
 
-    img{
+    img {
+
       text-align: center;
       display: block;
-      margin-top: auto;
-      margin-bottom: auto;
+
       margin-left: auto;
       margin-right: auto;
-      }
+    }
 
-      .login h1{
-        margin: 0%;
-        text-align: center;
-        padding: 0 0 20px;
-      }
-      .login label{
-        padding: 0 0 10px;
-      }
-      .login a{
-        padding-top: 50px;
-      }
+    .login-form {
+      text-align: center;
+width: 320px;
+height: 420px;
+      padding-bottom: 500px;
+    }
 
-    .login 
+    .title-login {
+      font-weight: bold;
+      display: block;
+      text-align: center;
+      padding: 0 0 20px;
+    }
 
+    .login label {
+      font-weight: bold;
+      padding: 0;
+      margin: 0;
+      display: block;
+    }
+
+    .login a {
+      padding-top: 50px;
+    }
   </style>
 </head>
 
-<body class="text-center">
+<body class="">
 
   <img class="img-login" src="img/login.png" alt="e-mercado">
   <div class="container p-5">
-    <h1 class="title-login">Login Here</h1>
-    <form class="login" method="POST" action="index.html">
+    <h1 class="title-login">Registrate</h1>
+    <form class="login-form" method="POST" action="index.html">
 
       <!--Ingreso de Usuario-->
       <label for="username">Username</label>
-      <input type="text" placeholder="Enter Username" required>
-      <br>
+      <input id="TxtUser" type="text" placeholder="Ingrese Usuario" required>
       <!--Ingreso de contraseña-->
       <label for="password">Password</label>
-      <input type="password" placeholder="Enter Password" required>
-<br>
-      <input type="submit" value="Login In">
-<br>
-<br>
+      <input id="TxtPass" type="password" placeholder="Ingrese Contraseña" required>
+      
+      <input id="BtnSubmit" type="button" value="Login In">
+      
       <a class="login-rec" href="">Lost your password?</a>
-      <br>
+      
       <a class="login-rec" href="">Don't have an account?</a>
 
     </form>
