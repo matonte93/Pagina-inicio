@@ -13,10 +13,10 @@ const loggear = () => {
         document.getElementById("TxtUser").value = "";
         document.getElementById("TxtPass").value = "";
         debugger;
-        login.push({ user: user, pass: pass });
+        login.push({ username: username, password: password });
 
         localStorage.setItem("usuario", JSON.stringify(login));
-        window.open = ("index.html", "Loggear");
+        window.location.href = "index.html";
     } else {
         alert("Nombre y apellido no deben ser vacíos");
     }
