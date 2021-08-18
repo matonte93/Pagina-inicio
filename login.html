@@ -14,10 +14,10 @@
   <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
   <link href="css/styles.css" rel="stylesheet">
   <style>
-    /* html,
+    html,
     body {
       height: 100%;
-    } */
+    }
 
     /* .text-center {
       margin: 0%;
@@ -26,18 +26,24 @@
     } */
 
     body {
-      margin: 0%;
+      height: auto;
+      margin: auto;
       padding: 0%;
       font-family: Arial, Helvetica, sans-serif;
       font-weight: bold;
       color: rgb(89, 201, 190);
+      background-image: url(img/login.png);
+      background-color: rgb(250, 250, 250);
+      background-repeat: no-repeat;
+      background-size: auto;
+      background-position-x: 60%;
+      background-position-y: center;
       /* display: -ms-flexbox;
       display: flex; */
       /* -ms-flex-align: center;
       align-items: center; */
       /* padding-top: 40px;
       padding-bottom: 40px; */
-      background-color: rgba(247, 247, 247, 0.61);
     }
 
     .signin {
@@ -47,27 +53,43 @@
       margin: auto;
     }
 
-    img {
+    /* img {
 
+      float: inherit;
+      width: 80%;
       text-align: center;
-      display: block;
+      padding-right: 15px;
 
-      margin-left: auto;
-      margin-right: auto;
-    }
+    } */
+
+    #prin {}
 
     .login-form {
+      float: left;
+      justify-content: left;
       text-align: center;
-width: 320px;
-height: 420px;
-      padding-bottom: 500px;
+      width: 160px;
+      max-width: 400px;
+      padding-left: 100px;
+      padding-top: 15%;
     }
 
     .title-login {
       font-weight: bold;
-      display: block;
-      text-align: center;
-      padding: 0 0 20px;
+
+    }
+
+    .login-form input {
+      width: 90%;
+      height: 20px;
+      margin: 0.5rem;
+    }
+
+    .login-form button {
+      padding: 1em 2em;
+      border: none;
+      background: rgb(100, 200, 255);
+      cursor: pointer;
     }
 
     .login label {
@@ -85,31 +107,32 @@ height: 420px;
 
 <body class="">
 
-  <img class="img-login" src="img/login.png" alt="e-mercado">
-  <div class="container p-5">
-    <h1 class="title-login">Registrate</h1>
-    <form class="login-form" method="POST" action="index.html">
+  <div id="prin">
+    <div class="container p-5">
+      <form class="login-form" method="POST" action="index.html">
+        <h1 class="title-login">Registrate</h1>
 
-      <!--Ingreso de Usuario-->
-      <label for="username">Username</label>
-      <input id="TxtUser" type="text" placeholder="Ingrese Usuario" required>
-      <!--Ingreso de contraseña-->
-      <label for="password">Password</label>
-      <input id="TxtPass" type="password" placeholder="Ingrese Contraseña" required>
-      
-      <input id="BtnSubmit" type="button" value="Login In">
-      
-      <a class="login-rec" href="">Lost your password?</a>
-      
-      <a class="login-rec" href="">Don't have an account?</a>
+        <!--Ingreso de Usuario-->
+        <label for="username">Username</label>
+        <input id="TxtUser" type="text" placeholder="Ingrese Usuario" required>
+        <!--Ingreso de contraseña-->
+        <label for="password">Password</label>
+        <input id="TxtPass" type="password" placeholder="Ingrese Contraseña" required>
 
-    </form>
-    <!-- <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
+        <input id="BtnSubmit" type="button" value="Login In">
+
+        <a class="login-rec" href="">Lost your password?</a>
+
+
+      </form>
+      <!-- <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h4 class="alert-heading">¡A trabajar! :)</h4>
       <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 08/08/2021).</p>
       <hr>
       <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p> -->
+    </div>
   </div>
+  <!-- <img class="img-login" src="img/login.png" alt="e-mercado"> -->
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
