@@ -44,12 +44,7 @@ var getJSONData = function(url){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-//   const usu = localStorage.getItem("usuario");
-//   debugger;
-//   console.log(usu);
-//   if (usu === null){
-// window.location.href="login.html";
-//   }else{
-//     alert("Porfavor Registrate");
-//   }
+// if(localStorage.length == 0){
+//   window.location.href = "login.html";
+// }
 });

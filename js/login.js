@@ -5,14 +5,16 @@ const loggear = () => {
     const password = document.getElementById("TxtPass").value;
     debugger;
     console.log(username, password);
-    if (username.trim()==="" || password.trim()==="") {
+    if (username==="" || password==="") {
         alert("Nombre y apellido no deben ser vacíos");
     }else{
         username.value = "";
         password.value = "";
         debugger;
-        login.push({ username: username, password: password });
-        localStorage.setItem("usuario", JSON.stringify(login));
+        localStorage.setItem("usu", username);
+        localStorage.setItem("pass", password);
+
+        alert("Bienvenido "+username)
         window.location.href = "index.html";
     }
 }
