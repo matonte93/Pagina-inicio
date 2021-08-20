@@ -140,3 +140,15 @@ a.custom-card:hover {
   color: orange;
 }
 
+.titulo1 h2{
+  text-align: center;
+  font-family: sans-serif;
+  padding-top: 60px;
+  text-decoration: underline;
+  color: rgb(104, 101, 101);
+}
+
+#precio{
+margin-left: 85%;
+}
+

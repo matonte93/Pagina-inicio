@@ -1,20 +1,15 @@
-const login = [];
 
 const loggear = () => {
     const username = document.getElementById("TxtUser").value;
     const password = document.getElementById("TxtPass").value;
     debugger;
-    console.log(username, password);
     if (username==="" || password==="") {
         alert("Nombre y apellido no deben ser vacíos");
     }else{
         username.value = "";
         password.value = "";
-        debugger;
         localStorage.setItem("usu", username);
-        localStorage.setItem("pass", password);
-
-        alert("Bienvenido "+username)
+        alert("Bienvenido "+username);
         window.location.href = "index.html";
     }
 }
