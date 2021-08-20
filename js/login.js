@@ -8,10 +8,7 @@ const loggear = () => {
     }else{
         username.value = "";
         password.value = "";
-        debugger;
         localStorage.setItem("usu", username);
-        localStorage.setItem("pass", password);
-
         alert("Bienvenido "+username);
         window.location.href = "index.html";
     }

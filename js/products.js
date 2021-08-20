@@ -15,12 +15,12 @@ function MostrarProductos(array){
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
                         <h4 class="mb-1">`+ productos.name+`</h4>
-                     
                     </div>
-
                 </div>
                 <small class="text-muted">` + productos.description+ `</small>
+                
             </div>
+            <h4 id="precio">` +productos.currency+" "+productos.cost+ ` </h4>
         </div>
         `
 
