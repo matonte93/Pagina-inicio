@@ -2,14 +2,13 @@
 const loggear = () => {
     const username = document.getElementById("TxtUser").value;
     const password = document.getElementById("TxtPass").value;
-    debugger;
-    if (username==="" || password==="") {
+    if (username === "" || password === "") {
         alert("Nombre y apellido no deben ser vacíos");
-    }else{
+    } else {
         username.value = "";
         password.value = "";
         localStorage.setItem("usu", username);
-        alert("Bienvenido "+username);
+        alert("Bienvenido " + username);
         window.location.href = "index.html";
     }
 }
