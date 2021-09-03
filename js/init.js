@@ -40,6 +40,8 @@ var getJSONData = function (url) {
     });
 }
 
+
+
 const validarusu = () => {
   if (!localStorage.getItem("usu")) {
     window.top.location.href = "login.html";
