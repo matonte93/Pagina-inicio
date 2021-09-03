@@ -1,7 +1,11 @@
-var productosArray = [];
+let productosArray = [];
+let filtro = "ascen";
+let campo = "cost";
+
 
 function MostrarProductos(array) {
-
+    const body = document.getElementById("containerprin");
+    body.innerHTML = "";
     let htmlContentToAppend = "";
     for (let a = 0; a < array.length; a++) {
         let productos = array[a];
@@ -22,10 +26,27 @@ function MostrarProductos(array) {
             <h4 id="precio">` + productos.currency + " " + productos.cost + ` </h4>
         </div>
         `
-
-        document.getElementById("containerprin").innerHTML = htmlContentToAppend;
+        body.innerHTML = htmlContentToAppend;
     }
 }
+
+const OrdenarDatosyMostrar = (array, campo, filtro) => {
+
+    if (filtro === "ascen")
+        array.sort((a, b) => {
+            if (a[campo] > b[campo]) return 1;
+            if (a[campo] < b[campo]) return -1;
+            return 0;
+        });
+    else
+        array.sort((a, b) => {
+            if (a[campo] > b[campo]) return -1;
+            if (a[campo] < b[campo]) return 1;
+            return 0;
+        });
+    MostrarProductos(array);
+};
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -36,8 +57,35 @@ document.addEventListener("DOMContentLoaded", function (e) {
             productosArray = resultObj.data;
             hideSpinner();
             //Muestro las categorías ordenadas
-            MostrarProductos(productosArray);
+            OrdenarDatosyMostrar(productosArray, campo, filtro);
         }
     });
+    document.getElementById("ascen").addEventListener("click", () => {
+        campo = "cost";
+        filtro = "ascen";
+        OrdenarDatosyMostrar(productosArray, campo, filtro);
 
+    });
+
+    document.getElementById("desce").addEventListener("click", () => {
+        campo = "cost";
+        filtro = "desce";
+        OrdenarDatosyMostrar(productosArray, campo, filtro);
+        
+    });
+
+    document.getElementById("relev").addEventListener("click", () => {
+
+        campo = "soldCount";
+        OrdenarDatosyMostrar(productosArray, campo, filtro);
+        
+    });
+
+    // document.getElementById("filtros").addEventListener("change", () => {
+
+
+    //         campo = "soldCount";
+    //         OrdenarDatosyMostrar(productosArray, campo, filtro)
+
+    // })
 });

@@ -24,14 +24,34 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+      <a id="usu" class="py-2 d-none d-md-inline-block" href="my-profile.html"></a>
     </div>
   </nav>
 
   <div class="titulo1">
     <h2>Productos</h2>
   </div>
-  <div id="containerprin" class="container p-5">
+  <div class="filtro">
 
+    <form class="ordenar" id="form1" action="">
+      <input class="orden todo" type="radio" name="filtro" checked id="ascen"> 
+      <label class="texto todo" for="">Ascendente</label> 
+      <input class="orden todo" type="radio" name="filtro" id="desce"> 
+      <label class="texto todo" for="">Descendente</label>
+      <input class="orden todo" type="radio" name="filtro" id="relev">
+      <label class="texto todo" for="">Mas Vendidos</label>
+    </form>
+    
+    <!-- <select name="filtros" id="filtros">
+      <option value="asen">Ascendente(Precio)</option>
+      <option value="desc">Descendente(Precio)</option>
+      <option value="relev">Más Vendidos</option>
+    </select>
+       -->
+  </div>
+  <div id="containerprin" class="container">
+
+  </div>
 
   </div>
   <footer class="text-muted bg-light">
