@@ -71,14 +71,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
         campo = "cost";
         filtro = "desce";
         OrdenarDatosyMostrar(productosArray, campo, filtro);
-        
+
     });
 
     document.getElementById("relev").addEventListener("click", () => {
-
+        filtro = "desce";
         campo = "soldCount";
         OrdenarDatosyMostrar(productosArray, campo, filtro);
-        
+
     });
 
     // document.getElementById("filtros").addEventListener("change", () => {

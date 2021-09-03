@@ -31,18 +31,38 @@
   <div class="titulo1">
     <h2>Productos</h2>
   </div>
-  <div class="filtro">
+
+  <div class="container">
+    <div class="row">
+      <div class="col text-right">
+        <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+          <label class="btn btn-light active" id="ascen"><!--sortAsc-->
+            <input type="radio" name="filtro" id="as" checked>Ascen.(Precio)
+          </label>
+          <label class="btn btn-light" id="desce"><!--sortDesc-->
+            <input type="radio" name="filtro" id="des">Desc.(Precio)
+          </label>
+          <label class="btn btn-light" id="relev">
+            <input type="radio" name="filtro" id="rel" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Mas Vendidos
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="filtro">
 
     <form class="ordenar" id="form1" action="">
-      <input class="orden todo" type="radio" name="filtro" checked id="ascen"> 
-      <label class="texto todo" for="">Ascendente</label> 
+       
+      <label class="btn btn-light active" for="">
+        <input type="radio" name="filtro" checked id="ascen">Ascendente
+      </label> 
       <input class="orden todo" type="radio" name="filtro" id="desce"> 
       <label class="texto todo" for="">Descendente</label>
       <input class="orden todo" type="radio" name="filtro" id="relev">
       <label class="texto todo" for="">Mas Vendidos</label>
-    </form>
-    
-    <!-- <select name="filtros" id="filtros">
+    </form> -->
+
+  <!-- <select name="filtros" id="filtros">
       <option value="asen">Ascendente(Precio)</option>
       <option value="desc">Descendente(Precio)</option>
       <option value="relev">Más Vendidos</option>
