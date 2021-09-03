@@ -45,7 +45,19 @@ var getJSONData = function (url) {
 const validarusu = () => {
   if (!localStorage.getItem("usu")) {
     window.top.location.href = "login.html";
+  }else{
+    usuario();
   }
+}
+
+const PrimeraLetraMayus = (str) => { 
+  return str.charAt(0).toUpperCase() + str.slice(1); 
+}
+
+const usuario = () => {
+  const div = document.getElementById("usu");
+  const usuario = localStorage.getItem("usu");
+  div.innerHTML = PrimeraLetraMayus(usuario);
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -53,4 +65,5 @@ const validarusu = () => {
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
   validarusu();
+  
 });
