@@ -2,7 +2,7 @@ let productosArray = [];
 let filtro = "ascen";
 let campo = "cost";
 
-
+//Funcion para recorrer e imprimir en pantalla un array
 function MostrarProductos(array) {
     const body = document.getElementById("containerprin");
     body.innerHTML = "";
@@ -30,6 +30,7 @@ function MostrarProductos(array) {
     }
 }
 
+//Funcion para ordenar las arrays antes de mostrarlas usando sort
 const OrdenarDatosyMostrar = (array, campo, filtro) => {
 
     if (filtro === "ascen")
@@ -60,6 +61,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
             OrdenarDatosyMostrar(productosArray, campo, filtro);
         }
     });
+
+    //Agregos los eventos correspondientes para darle funcionalidad a los botones de filtrado
     document.getElementById("ascen").addEventListener("click", () => {
         campo = "cost";
         filtro = "ascen";
@@ -81,11 +84,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     });
 
-    // document.getElementById("filtros").addEventListener("change", () => {
-
-
-    //         campo = "soldCount";
-    //         OrdenarDatosyMostrar(productosArray, campo, filtro)
-
-    // })
+  
 });

@@ -15,6 +15,7 @@ var hideSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "none";
 }
 
+//Verificamos y traemos de una url el Json deseado, y verifica su estado.
 var getJSONData = function (url) {
   var result = {};
   showSpinner();
@@ -41,7 +42,7 @@ var getJSONData = function (url) {
 }
 
 
-
+//Verificamos que los datos de loggeo existan, sino redirecciona al login
 const validarusu = () => {
   if (!localStorage.getItem("usu")) {
     window.top.location.href = "login.html";
@@ -50,10 +51,12 @@ const validarusu = () => {
   }
 }
 
+//Convertimos la primera letra del nombre de usario a mayus
 const PrimeraLetraMayus = (str) => { 
   return str.charAt(0).toUpperCase() + str.slice(1); 
 }
 
+//Al elementeo con id usu se le inserta el nombre del usuario
 const usuario = () => {
   const div = document.getElementById("usu");
   const usuario = localStorage.getItem("usu");

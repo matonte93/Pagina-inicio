@@ -1,4 +1,7 @@
 
+
+// Creamos la funciion loggear donde verificamos que los datos ingresados no estan vacios, y de no ser el caso limpia los compas y guarda en el local
+//localstorage el usuaio que a la vez le muestra un mensaje de bienvenida
 const loggear = () => {
     const username = document.getElementById("TxtUser").value;
     const password = document.getElementById("TxtPass").value;
@@ -18,5 +21,7 @@ const loggear = () => {
 //elementos HTML presentes.
 
 document.addEventListener("DOMContentLoaded", () => {
+    
+    //Asocioamos un evento al boton de loggear para que ejecute la funcion al darle click
     document.getElementById("BtnSubmit").addEventListener("click", loggear);
 });
