@@ -1,6 +1,9 @@
 let productosArray = [];
 let filtro = "ascen";
 let campo = "cost";
+var minC = undefined;
+var maxC = undefined;
+
 
 //Funcion para recorrer e imprimir en pantalla un array
 function MostrarProductos(array) {
@@ -9,6 +12,10 @@ function MostrarProductos(array) {
     let htmlContentToAppend = "";
     for (let a = 0; a < array.length; a++) {
         let productos = array[a];
+
+        if (((minC == undefined) || (minC != undefined && parseInt(productos.cost) >= minC)) &&
+            ((maxC == undefined) || (maxC != undefined && parseInt(productos.cost) <= maxC))){
+
         htmlContentToAppend += `
         <div class="list-group-item list-group-item-action">
             <div class="row">
@@ -28,7 +35,7 @@ function MostrarProductos(array) {
         `
         body.innerHTML = htmlContentToAppend;
     }
-}
+}}
 
 //Funcion para ordenar las arrays antes de mostrarlas usando sort
 const OrdenarDatosyMostrar = (array, campo, filtro) => {
@@ -47,6 +54,9 @@ const OrdenarDatosyMostrar = (array, campo, filtro) => {
         });
     MostrarProductos(array);
 };
+
+
+
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -84,5 +94,35 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     });
 
-  
+    document.getElementById("btnlimpiar").addEventListener("click", function(){
+        document.getElementById("minimo").value = "";
+        document.getElementById("maximo").value = "";
+
+        minC = undefined;
+        maxC = undefined;
+
+        MostrarProductos(productosArray);
+    });
+
+    document.getElementById("btnfiltrar").addEventListener("click", function(){
+        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
+        //de productos por categoría.
+        minC = document.getElementById("minimo").value;
+        maxC = document.getElementById("maximo").value;
+
+        if ((minC != undefined) && (minC != "") >= 0){
+            minC = minC;
+        }else{
+            minC = undefined;
+        }
+
+        if ((maxC != undefined) && (maxC != "") >= 0) {
+            maxC = maxC;
+        }else{
+            maxC = undefined;
+        }
+
+        MostrarProductos(productosArray);
+    });
+
 });
