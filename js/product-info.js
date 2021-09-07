@@ -30,11 +30,13 @@ document.addEventListener("DOMContentLoaded", function(e){
 
             let productNameHTML  = document.getElementById("productName");
             let productDescriptionHTML = document.getElementById("productDescription");
+            let productCostHTML = document.getElementById("Precio");
             // let productCountHTML = document.getElementById("productCount");
             // let productCriteriaHTML = document.getElementById("productCriteria");
         
             productNameHTML.innerHTML = producto.name;
             productDescriptionHTML.innerHTML = producto.description;
+            productCostHTML.innerHTML = producto.currency +" "+ producto.cost;
             // productCountHTML.innerHTML = category.productCount;
             // productCriteriaHTML.innerHTML = category.productCriteria;
 

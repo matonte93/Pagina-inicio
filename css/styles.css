@@ -152,3 +152,11 @@ a.custom-card:hover {
 margin-left: 85%;
 }
 
+#pro{
+text-decoration: none;
+}
+
+#Precio{
+padding-top: 10px;
+  font-size: 40px;
+}
