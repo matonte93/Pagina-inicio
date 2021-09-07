@@ -17,6 +17,7 @@ function MostrarProductos(array) {
             ((maxC == undefined) || (maxC != undefined && parseInt(productos.cost) <= maxC))){
 
         htmlContentToAppend += `
+        <a href="product-info.html">
         <div class="list-group-item list-group-item-action">
             <div class="row">
                 <div class="col-3">
@@ -32,6 +33,7 @@ function MostrarProductos(array) {
             </div>
             <h4 id="precio">` + productos.currency + " " + productos.cost + ` </h4>
         </div>
+        </a>
         `
         body.innerHTML = htmlContentToAppend;
     }
