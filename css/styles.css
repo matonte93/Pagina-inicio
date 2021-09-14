@@ -156,7 +156,27 @@ margin-left: 85%;
 text-decoration: none;
 }
 
-#Precio{
+#Cost{
 padding-top: 10px;
-  font-size: 40px;
+font-size: 40px;
+}
+
+#productName{
+text-align: center;
+  font-size: 45px;
+}
+
+#productDescription{
+  font-size: 20px;
+}
+
+#soldcount{
+  float: right;
+  font-size: 37px;
+}
+
+#commentdiv{
+
+padding-top: 12px;
+
 }
