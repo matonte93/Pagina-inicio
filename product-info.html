@@ -39,49 +39,70 @@
         <h3 id="productName"></h3>
         <hr class="my-3">
         <dl>
-          <dt>Descripción</dt>
+          <dt class="des">Descripción:</dt>
           <dd>
             <p id="productDescription"></p>
             <hr class="my-3">
           </dd>
-  
+
           <dt>Moneda-Precio.</dt>
           <dd>
             <p id="soldcount"></p>
-            <p id="Cost"></p> 
-            
+            <p id="Cost"></p>
+
             <hr class="my-3">
           </dd>
-  
+
           <!-- <dt>Criterio para incluir productos en esta categoría</dt>
           <dd>
             <p id="productCriteria"></p>
           </dd> -->
-  
+
           <dt>Imágenes ilustrativas</dt>
           <dd>
             <div class="row text-center text-lg-left pt-2" id="gallery"></div>
             <hr class="my-3">
           </dd>
 
-          <dt>Comentarios</dt>
+          <div id="commentbox">
+
+            <h3 class="des">Nuevo Comentario:</h3>
+
+            <form action="">
+
+              <input type="text" id="commentuser" placeholder="Ingrese usuario...">
+              <br>
+              <br>
+              <textarea rows="5" cols="50" id="boxcomment" placeholder="Comentario..."></textarea>
+              <br>
+              <label for="">Puntuación: <input type="number" id="numberscore" value="1" max="5" min="1"></label>
+              <br>
+              <input type="button" id="BtnComment" value="Enviar">
+
+            </form>
+
+          </div>
+
           <dd>
             <div id="commentdiv"></div>
-            
+
             <div id="score"></div>
           </dd>
         </dl>
+
+
+
         <!-- <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a> -->
       </div>
     </main>
-    </div>
+  </div>
   </div>
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
         <a href="#">Volver arriba</a>
       </p>
-      
+
     </div>
   </footer>
   <div id="spinner-wrapper">

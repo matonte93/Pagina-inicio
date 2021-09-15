@@ -22,6 +22,7 @@ function ShowProductGallery(array) {
 function Showcomment(array) {
 
     let htmlContentToAppend = "";
+    let htmlStars = "";
 
     for (let i = 0; i < array.length; i++) {
         let comment = array[i];
@@ -33,7 +34,7 @@ function Showcomment(array) {
                 </div>
                 <div class="col">
                     <div >
-                        <h4 class="mb-1">`+ comment.user + `</h4> <p>`+ comment.dateTime +`</p>
+                        <h4 class="mb-1">`+ comment.user + `</h4> <p>` + comment.dateTime + `</p>
                     </div>
                     <div>
                         <p>`+ comment.description + `</p>
@@ -47,8 +48,22 @@ function Showcomment(array) {
          </div>
         `
 
+        for (let a in array) {
+           
+            // let span = document.createElement("SPAN");
+            
+            // document.getElementById("score").appendChild(span);
+        //     htmlStars += `
+        // <span class="fa fa-star checked"></span>
+        // `
+
+        }
+         
         document.getElementById("commentdiv").innerHTML = htmlContentToAppend;
+        
+       
     }
+    
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -69,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             productDescriptionHTML.innerHTML = product.description;
             productCostHTML.innerHTML = product.currency + " " + product.cost;
             productSoldCountHTML.innerHTML = "Vendidos: " + product.soldCount + " uds.";
-            
+
 
             //Muestro las imagenes en forma de galería
             ShowProductGallery(product.images);
@@ -80,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if (resultObj2.status === "ok") {
             comments = resultObj2.data;
 
-            // let score = document.getElementById("score");
+            let score = document.getElementById("score");
 
             Showcomment(comments);
         }

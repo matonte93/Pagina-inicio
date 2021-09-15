@@ -180,3 +180,16 @@ text-align: center;
 padding-top: 12px;
 
 }
+
+.checked {
+  color: orange;
+}
+
+#commentdiv{
+
+  padding-top: 30px;
+}
+
+.des{
+  padding-bottom: 10px;
+}
