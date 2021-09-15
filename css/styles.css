@@ -162,7 +162,7 @@ font-size: 40px;
 }
 
 #productName{
-text-align: center;
+
   font-size: 45px;
 }
 
@@ -192,4 +192,11 @@ padding-top: 12px;
 
 .des{
   padding-bottom: 10px;
+}
+
+#categoryinfo{
+text-align: right;
+  float:right;
+padding-top: 20px;
+
 }

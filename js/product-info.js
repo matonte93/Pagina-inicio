@@ -23,14 +23,8 @@ function Showcomment(array) {
 
     let htmlContentToAppend = "";
     let span = document.createElement("span");
+    let div = document.getElementsByClassName("comments");
     span.classList.add("fa", "fa-star", "checked");
-
-
-    for (let a = 0; a <= array.score; a++) {
-        let scor = array[a].score;
-
-
-    }
 
 
     for (let i = 0; i < array.length; i++) {
@@ -57,8 +51,14 @@ function Showcomment(array) {
             </div>
          </div>
         `
+        // for (let c = 0; c <= div.length; c++) {
+        //     let elementdiv = div[c];
 
+        //     for (let a = 0; a <= elementdiv.score; a++) {
+        //         elementdiv.appendChild(span);
 
+        //     }
+        // }
 
         document.getElementById("commentdiv").innerHTML = htmlContentToAppend;
 
@@ -85,12 +85,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
             let productDescriptionHTML = document.getElementById("productDescription");
             let productCostHTML = document.getElementById("Cost");
             let productSoldCountHTML = document.getElementById("soldcount");
-
+            let productCategoryHTML = document.getElementById("categoryinfo");
 
             productNameHTML.innerHTML = product.name;
             productDescriptionHTML.innerHTML = product.description;
             productCostHTML.innerHTML = product.currency + " " + product.cost;
             productSoldCountHTML.innerHTML = "Vendidos: " + product.soldCount + " uds.";
+            productCategoryHTML.innerHTML = "Categoria: " + product.category;
 
 
             //Muestro las imagenes en forma de galería
