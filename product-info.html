@@ -53,10 +53,6 @@
             <hr class="my-3">
           </dd>
 
-          <!-- <dt>Criterio para incluir productos en esta categoría</dt>
-          <dd>
-            <p id="productCriteria"></p>
-          </dd> -->
 
           <dt>Imágenes ilustrativas</dt>
           <dd>
@@ -64,13 +60,16 @@
             <hr class="my-3">
           </dd>
 
+
+          <!--Creacion de caja de comentarios-->
+
           <div id="commentbox">
 
             <h3 class="des">Nuevo Comentario:</h3>
 
-            <form action="">
+            <form name="commentform" id="commentform" action="">
 
-              <input type="text" id="commentuser" placeholder="Ingrese usuario...">
+              <input type="text" id="commentuser" name="commentuser" placeholder="Ingrese usuario...">
               <br>
               <br>
               <textarea rows="5" cols="50" id="boxcomment" placeholder="Comentario..."></textarea>
@@ -84,8 +83,11 @@
           </div>
 
           <dd>
+
+            <!--Div de los comentarios pre cargados-->
             <div id="commentdiv"></div>
 
+            <!--Puntaje-->
             <div id="score"></div>
           </dd>
         </dl>

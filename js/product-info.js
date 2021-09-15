@@ -22,13 +22,23 @@ function ShowProductGallery(array) {
 function Showcomment(array) {
 
     let htmlContentToAppend = "";
-    let htmlStars = "";
+    let span = document.createElement("span");
+    span.classList.add("fa", "fa-star", "checked");
+
+
+    for (let a = 0; a <= array.score; a++) {
+        let scor = array[a].score;
+
+
+    }
+
 
     for (let i = 0; i < array.length; i++) {
         let comment = array[i];
 
+
         htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
+        <div name="comments" class="list-group-item list-group-item-action">
             <div>
                 <div class="col-3">
                 </div>
@@ -40,31 +50,28 @@ function Showcomment(array) {
                         <p>`+ comment.description + `</p>
                     </div>
                     <div>
-                    
+
                     </div>
                 </div>
-                
+
             </div>
          </div>
         `
 
-        for (let a in array) {
-           
-            // let span = document.createElement("SPAN");
-            
-            // document.getElementById("score").appendChild(span);
-        //     htmlStars += `
-        // <span class="fa fa-star checked"></span>
-        // `
 
-        }
-         
+
         document.getElementById("commentdiv").innerHTML = htmlContentToAppend;
-        
-       
+
+
     }
-    
+
 }
+
+// const GetNameUser = () => {
+//     const user = localStorage.getItem("usu");
+//     const Text = document.getElementById("commentuser");
+
+// }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -78,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             let productDescriptionHTML = document.getElementById("productDescription");
             let productCostHTML = document.getElementById("Cost");
             let productSoldCountHTML = document.getElementById("soldcount");
-            // let productCriteriaHTML = document.getElementById("productCriteria");
+
 
             productNameHTML.innerHTML = product.name;
             productDescriptionHTML.innerHTML = product.description;
@@ -94,8 +101,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj2) {
         if (resultObj2.status === "ok") {
             comments = resultObj2.data;
-
-            let score = document.getElementById("score");
 
             Showcomment(comments);
         }
