@@ -19,17 +19,18 @@ function ShowProductGallery(array) {
     }
 }
 
-function Showcomment(array) {
+function Showcomments(array) {
 
     let htmlContentToAppend = "";
     let span = document.createElement("span");
-    let div = document.getElementsByClassName("comments");
+    let div = document.getElementById("score");
     span.classList.add("fa", "fa-star", "checked");
 
 
     for (let i = 0; i < array.length; i++) {
         let comment = array[i];
-
+        const scores = array[i].score;
+        console.log(scores);
 
         htmlContentToAppend += `
         <div name="comments" class="list-group-item list-group-item-action">
@@ -51,14 +52,12 @@ function Showcomment(array) {
             </div>
          </div>
         `
-        // for (let c = 0; c <= div.length; c++) {
-        //     let elementdiv = div[c];
 
-        //     for (let a = 0; a <= elementdiv.score; a++) {
-        //         elementdiv.appendChild(span);
+        for (let c = 0; c <= scores; c++) {
+            debugger;
+            div.appendChild(span);
 
-        //     }
-        // }
+        }
 
         document.getElementById("commentdiv").innerHTML = htmlContentToAppend;
 
@@ -103,7 +102,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if (resultObj2.status === "ok") {
             comments = resultObj2.data;
 
-            Showcomment(comments);
+
+            Showcomments(comments);
         }
     });
 
