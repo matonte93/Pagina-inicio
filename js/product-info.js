@@ -53,7 +53,7 @@ function Showcomments(array) {
         `
 
         //Imprimimos las estrellas (puntaje)
-        )
+        
         for (let c = 0; c < scores; c++) {
 
             htmlContentToAppend += `
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
             Showcomments(comments);
 
-            document.getElementById("BtnComment").addEventListener("click", function () {
+            document.getElementById("BtnComment").addEventListener("click", function (){ 
                 insertCommment();
             });
         }
