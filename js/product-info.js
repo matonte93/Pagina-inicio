@@ -107,13 +107,11 @@ const insertCommment = () => {
         htmlContentToAppend += `
         <span class="fa fa-star checked"></span>
         `
-
     }
-
     document.getElementById("commentdiv").innerHTML += htmlContentToAppend;
-
 }
 
+//Pre-cargo el nombre de usuario en el campo de usuario al ingrear el comentario
 const GetNameUser = () => {
     const user = localStorage.getItem("usu");
     document.getElementById("commentuser").value = user;
@@ -128,12 +126,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if (resultObj.status === "ok") {
             product = resultObj.data;
 
+            //Almaceno en variasbles las etiquetas necesarias
             let productNameHTML = document.getElementById("productName");
             let productDescriptionHTML = document.getElementById("productDescription");
             let productCostHTML = document.getElementById("Cost");
             let productSoldCountHTML = document.getElementById("soldcount");
             let productCategoryHTML = document.getElementById("categoryinfo");
 
+            //Inserto en las etiquetas los datos que preciso
             productNameHTML.innerHTML = product.name;
             productDescriptionHTML.innerHTML = product.description;
             productCostHTML.innerHTML = product.currency + " " + product.cost;
@@ -143,6 +143,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
             //Muestro las imagenes en forma de galería
             ShowProductGallery(product.images);
+            GetNameUser();
         }
     });
 
@@ -154,6 +155,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
             Showcomments(comments);
 
+            //Al hacer clicl en el boton enviar, ejecuta la funcion para insertar comentario
             document.getElementById("BtnComment").addEventListener("click", function (){ 
                 insertCommment();
             });
