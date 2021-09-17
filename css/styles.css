@@ -187,7 +187,7 @@ padding-top: 12px;
 
 #commentdiv{
 
-  padding-top: 30px;
+  padding-top: 8px;
 }
 
 .des{
@@ -202,5 +202,12 @@ padding-top: 20px;
 }
 
 #commentform{
-  padding-bottom: 15px;
+  padding-bottom: 5px;
+}
+
+
+
+.fa{
+
+  padding-left: 5px;
 }

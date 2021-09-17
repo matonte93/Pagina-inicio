@@ -1,5 +1,6 @@
 var product = {};
 
+//Funcion para mostrar las fotos en forma de galeria
 function ShowProductGallery(array) {
 
     let htmlContentToAppend = "";
@@ -18,22 +19,20 @@ function ShowProductGallery(array) {
         document.getElementById("gallery").innerHTML = htmlContentToAppend;
     }
 }
-
+ //Funcion para cargar los comentarios desde el array
 function Showcomments(array) {
 
     let htmlContentToAppend = "";
-    let span = document.createElement("span");
-    let div = document.getElementById("score");
-    span.classList.add("fa", "fa-star", "checked");
+    // let span = document.createElement("span");
+    // span.classList.add("fa", "fa-star", "checked");
 
-
+    // Recorro el array e imprimo en pantalla los comentarios
     for (let i = 0; i < array.length; i++) {
         let comment = array[i];
         const scores = array[i].score;
-        console.log(scores);
 
         htmlContentToAppend += `
-        <div name="comments" class="list-group-item list-group-item-action">
+        <div name="comments" class="comments">
             <div>
                 <div class="col-3">
                 </div>
@@ -53,24 +52,73 @@ function Showcomments(array) {
          </div>
         `
 
-        for (let c = 0; c <= scores; c++) {
-            debugger;
-            div.appendChild(span);
+        //Imprimimos las estrellas (puntaje)
+        )
+        for (let c = 0; c < scores; c++) {
 
+            htmlContentToAppend += `
+            <span class="fa fa-star checked"></span>
+            `
         }
 
-        document.getElementById("commentdiv").innerHTML = htmlContentToAppend;
+        htmlContentToAppend += `
+        <hr class="my-3">
+        `
 
+        document.getElementById("commentdiv").innerHTML = htmlContentToAppend;
 
     }
 
 }
 
-// const GetNameUser = () => {
-//     const user = localStorage.getItem("usu");
-//     const Text = document.getElementById("commentuser");
+// Funcion para insertar comentarios
+const insertCommment = () => {
+    let htmlContentToAppend = "";
+    let user = document.getElementById("commentuser").value;
+    let comment = document.getElementById("boxcomment").value;
+    let hoy = new Date(); 
+    let score = document.getElementById("numberscore").value;
+    let date= hoy.getFullYear() + '-' + ( hoy.getMonth() + 1 ) + '-' + hoy.getDate();
+    let time = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
 
-// }
+
+    htmlContentToAppend += `
+      <div name="comments" class="comments">
+            <div>
+                <div class="col-3">
+                </div>
+                <div class="col">
+                    <div >
+                        <h4 class="mb-1">`+ user + `</h4> <p>` + date + ` ` + time + `</p>
+                    </div>
+                    <div>
+                        <p>`+ comment + `</p>
+                    </div>
+                    <div>
+                    
+                    </div>
+                </div>
+
+            </div>
+         </div>
+
+`
+    for (i = 0; i < score; i++) {
+        htmlContentToAppend += `
+        <span class="fa fa-star checked"></span>
+        `
+
+    }
+
+    document.getElementById("commentdiv").innerHTML += htmlContentToAppend;
+
+}
+
+const GetNameUser = () => {
+    const user = localStorage.getItem("usu");
+    document.getElementById("commentuser").value = user;
+
+}
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -101,9 +149,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj2) {
         if (resultObj2.status === "ok") {
             comments = resultObj2.data;
+            let div = document.getElementById("commentdiv");
 
 
             Showcomments(comments);
+
+            document.getElementById("BtnComment").addEventListener("click", function () {
+                insertCommment();
+            });
         }
     });
 
