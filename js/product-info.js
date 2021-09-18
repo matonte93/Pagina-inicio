@@ -19,7 +19,7 @@ function ShowProductGallery(array) {
         document.getElementById("gallery").innerHTML = htmlContentToAppend;
     }
 }
- //Funcion para cargar los comentarios desde el array
+//Funcion para cargar los comentarios desde el array
 function Showcomments(array) {
 
     let htmlContentToAppend = "";
@@ -53,7 +53,7 @@ function Showcomments(array) {
         `
 
         //Imprimimos las estrellas (puntaje)
-        
+
         for (let c = 0; c < scores; c++) {
 
             htmlContentToAppend += `
@@ -76,9 +76,9 @@ const insertCommment = () => {
     let htmlContentToAppend = "";
     let user = document.getElementById("commentuser").value;
     let comment = document.getElementById("boxcomment").value;
-    let hoy = new Date(); 
+    let hoy = new Date();
     let score = document.getElementById("numberscore").value;
-    let date= hoy.getFullYear() + '-' + ( hoy.getMonth() + 1 ) + '-' + hoy.getDate();
+    let date = hoy.getFullYear() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getDate();
     let time = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
 
 
@@ -122,6 +122,16 @@ const GetNameUser = () => {
 
 }
 
+const relatedProduct = (array) => {
+
+    for (i = 0; i < array.relatedProducts.length; i++) {
+        const related = array[i];
+        
+
+    }
+
+}
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -160,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             Showcomments(comments);
 
             //Al hacer clicl en el boton enviar, ejecuta la funcion para insertar comentario
-            document.getElementById("BtnComment").addEventListener("click", function (){ 
+            document.getElementById("BtnComment").addEventListener("click", function () {
                 insertCommment();
             });
         }
