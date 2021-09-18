@@ -156,7 +156,58 @@ margin-left: 85%;
 text-decoration: none;
 }
 
-#Precio{
+#Cost{
 padding-top: 10px;
-  font-size: 40px;
+font-size: 40px;
+}
+
+#productName{
+
+  font-size: 45px;
+}
+
+#productDescription{
+  font-size: 20px;
+}
+
+#soldcount{
+  float: right;
+  font-size: 37px;
+}
+
+#commentdiv{
+
+padding-top: 12px;
+
+}
+
+.checked {
+  color: orange;
+}
+
+#commentdiv{
+
+  padding-top: 8px;
+}
+
+.des{
+  padding-bottom: 10px;
+}
+
+#categoryinfo{
+text-align: right;
+  float:right;
+padding-top: 20px;
+
+}
+
+#commentform{
+  padding-bottom: 5px;
+}
+
+
+
+.fa{
+
+  padding-left: 5px;
 }
