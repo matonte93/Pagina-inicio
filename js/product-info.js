@@ -108,6 +108,10 @@ const insertCommment = () => {
         <span class="fa fa-star checked"></span>
         `
     }
+
+    htmlContentToAppend += `
+    <hr class="my-3">
+    `
     document.getElementById("commentdiv").innerHTML += htmlContentToAppend;
 }
 
