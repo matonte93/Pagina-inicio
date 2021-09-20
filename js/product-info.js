@@ -122,12 +122,14 @@ const GetNameUser = () => {
 
 }
 
-const relatedProduct = (array) => {
+const relatedProduct = (array1, array2) => {
 
-    for (i = 0; i < array.relatedProducts.length; i++) {
-        const related = array[i];
-        
+    htmlContentToAppend = "";
 
+    for (i = 0; i < array1.relatedProducts.length; i++) {
+        const related = array1.relatedProduct[i];
+        let arr = array2[related];
+        console.log(arr);
     }
 
 }
@@ -151,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             productNameHTML.innerHTML = product.name;
             productDescriptionHTML.innerHTML = product.description;
             productCostHTML.innerHTML = product.currency + " " + product.cost;
-            productSoldCountHTML.innerHTML = "Vendidos: " + product.soldCount + " uds.";
+            productSoldCountHTML.innerHTML = "Vendidos: " + product.soldCount + " unid.";
             productCategoryHTML.innerHTML = "Categoria: " + product.category;
 
 
@@ -166,12 +168,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
             comments = resultObj2.data;
             let div = document.getElementById("commentdiv");
 
-
             Showcomments(comments);
 
             //Al hacer clicl en el boton enviar, ejecuta la funcion para insertar comentario
             document.getElementById("BtnComment").addEventListener("click", function () {
+
                 insertCommment();
+
             });
         }
     });
