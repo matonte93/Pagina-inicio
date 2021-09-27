@@ -76,16 +76,16 @@ const insertCommment = () => {
     let htmlContentToAppend = "";
     let user = document.getElementById("commentuser").value;
     let comment = document.getElementById("boxcomment").value;
-    let hoy = new Date();
+    let today = new Date();
     let score = document.getElementById("numberscore").value;
-    let date = hoy.getFullYear() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getDate();
-    let time = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
+    let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    let time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
     document.getElementById("commentuser").value = "";
     document.getElementById("boxcomment").value = "";
 
 
     htmlContentToAppend += `
-      <div name="comments" class="comments">
+      <div id="newComment" name="comments" class="comments">
             <div>
                 <div class="col-3">
                 </div>
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj2) {
         if (resultObj2.status === "ok") {
             comments = resultObj2.data;
-            let div = document.getElementById("commentdiv");
+            // let div = document.getElementById("commentdiv");
 
             Showcomments(comments);
 
@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             document.getElementById("BtnComment").addEventListener("click", function () {
 
                 insertCommment();
-
+                document.getElementById("newComment").scrollIntoView();
             });
         }
     });
