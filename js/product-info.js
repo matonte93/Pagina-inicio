@@ -80,6 +80,8 @@ const insertCommment = () => {
     let score = document.getElementById("numberscore").value;
     let date = hoy.getFullYear() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getDate();
     let time = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
+    document.getElementById("commentuser").value = "";
+    document.getElementById("boxcomment").value = "";
 
 
     htmlContentToAppend += `
