@@ -46,21 +46,57 @@ var getJSONData = function (url) {
 const validarusu = () => {
   if (!localStorage.getItem("usu")) {
     window.top.location.href = "login.html";
-  }else{
-    usuario();
+  } else {
+    showUser();
   }
 }
 
 //Convertimos la primera letra del nombre de usario a mayus
-const PrimeraLetraMayus = (str) => { 
-  return str.charAt(0).toUpperCase() + str.slice(1); 
+const PrimeraLetraMayus = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 //Al elementeo con id usu se le inserta el nombre del usuario
-const usuario = () => {
-  const div = document.getElementById("usu");
-  const usuario = localStorage.getItem("usu");
-  div.innerHTML = PrimeraLetraMayus(usuario);
+// const usuario = () => {
+//   const div = document.getElementById("usu");
+//   const usuario = localStorage.getItem("usu");
+//   div.innerHTML = PrimeraLetraMayus(usuario);
+// }
+
+const showUser = () => {
+
+  let htmlContentToAppend = "";
+  const user = localStorage.getItem("usu");
+
+  htmlContentToAppend += `
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a id="usu" class="py-2 d-none d-md-inline-block">${user}</a>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="my-profile.html">Mi perfil.</a>
+          <a class="dropdown-item" href="cart.html">Mi Carrito</a>
+          <a id="closeSesion" class="dropdown-item" href="#">Cerrar sesión.</a>
+        </div>
+      </div>
+`
+  const Nav = document.getElementById("Nav");
+
+  Nav.innerHTML += htmlContentToAppend;
+
+  // const a = document.createElement("a");
+  // a.className+="py-2 d-none d-md-inline-block";
+  // const Node = document.createTextNode(`${user}`);
+  // a.appendChild(Node);
+  // Nav.appendChild(a);
+
+
+}
+
+const closeSesion = () => {
+  localStorage.removeItem("usu");
+  window.location.href = "login.html";
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -68,5 +104,9 @@ const usuario = () => {
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
   validarusu();
-  
+
+  document.getElementById("closeSesion").addEventListener("click", function () {
+    closeSesion();
+  });
+
 });
