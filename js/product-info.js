@@ -5,7 +5,9 @@ function ShowProductGallery(array) {
 
     let htmlContentToAppend = "";
 
+htmlContentToAppend = `
 
+`
 
     for (let i = 0; i < array.length; i++) {
         let image = array[i];
@@ -17,10 +19,10 @@ function ShowProductGallery(array) {
           </div>
         `
 
-
     }
 
     htmlContentToAppend += `
+
     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -29,6 +31,7 @@ function ShowProductGallery(array) {
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+
     `
 
     document.getElementById("carousel-div").innerHTML = htmlContentToAppend;
@@ -158,7 +161,7 @@ const relatedProduct = (array1, array2) => {
           </div>
       <div class="cardFoot">
       <p id="costCard">` + arr.currency + ` ` + arr.cost + `</p>
-      <small class="texr-muted">Vendidos:` + arr.soldCount + ` </small>
+      <small class="text-muted">Vendidos: ` + arr.soldCount + ` </small>
        </div>
      </div>
 
