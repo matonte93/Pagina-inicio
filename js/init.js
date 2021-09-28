@@ -43,7 +43,7 @@ var getJSONData = function (url) {
 
 
 //Verificamos que los datos de loggeo existan, sino redirecciona al login
-const validarusu = () => {
+const userOk = () => {
   if (!localStorage.getItem("usu")) {
     window.top.location.href = "login.html";
   } else {
@@ -71,13 +71,13 @@ const showUser = () => {
   htmlContentToAppend += `
 
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <a id="usu" class="py-2 d-none d-md-inline-block">${user}</a>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="my-profile.html">Mi perfil.</a>
+          <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
           <a class="dropdown-item" href="cart.html">Mi Carrito</a>
-          <a id="closeSesion" class="dropdown-item" href="#">Cerrar sesión.</a>
+          <a id="closeSesion" class="dropdown-item" href="#">Cerrar sesión</a>
         </div>
       </div>
 `
@@ -91,7 +91,6 @@ const showUser = () => {
   // a.appendChild(Node);
   // Nav.appendChild(a);
 
-
 }
 
 const closeSesion = () => {
@@ -103,7 +102,7 @@ const closeSesion = () => {
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
-  validarusu();
+  userOk();
 
   document.getElementById("closeSesion").addEventListener("click", function () {
     closeSesion();

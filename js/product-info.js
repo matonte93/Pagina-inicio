@@ -5,19 +5,33 @@ function ShowProductGallery(array) {
 
     let htmlContentToAppend = "";
 
+
+
     for (let i = 0; i < array.length; i++) {
         let image = array[i];
 
         htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + image + `" alt="">
-            </div>
-        </div>
+        
+          <div class="carousel-item active">
+            <img src="` + image + `" class="d-block w-100" alt="...">
+          </div>
         `
 
-        document.getElementById("gallery").innerHTML = htmlContentToAppend;
+
     }
+
+    htmlContentToAppend += `
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+    `
+
+    document.getElementById("carousel-div").innerHTML = htmlContentToAppend;
 }
 //Funcion para cargar los comentarios desde el array
 function Showcomments(array) {
@@ -129,11 +143,30 @@ const relatedProduct = (array1, array2) => {
     htmlContentToAppend = "";
 
     for (i = 0; i < array1.relatedProducts.length; i++) {
-        const related = array1.relatedProduct[i];
+        const related = array1.relatedProducts[i];
+        console.log(related);
         let arr = array2[related];
         console.log(arr);
+
+        htmlContentToAppend += `
+
+        <div class="card">
+            <img src="` + arr.imgSrc + `" class="card-img-top" alt="...">
+        <div class="card-body">
+         <h5 class="card-title">` + arr.name + `</h5>
+             <p class="card-text">` + arr.description + `</p>
+          </div>
+      <div class="cardFoot">
+      <p id="costCard">` + arr.currency + ` ` + arr.cost + `</p>
+      <small class="texr-muted">Vendidos:` + arr.soldCount + ` </small>
+       </div>
+     </div>
+
+        `
+
     }
 
+    card.innerHTML += htmlContentToAppend;
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -163,22 +196,37 @@ document.addEventListener("DOMContentLoaded", function (e) {
             ShowProductGallery(product.images);
             GetNameUser();
         }
-    });
 
-    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj2) {
-        if (resultObj2.status === "ok") {
-            comments = resultObj2.data;
-            // let div = document.getElementById("commentdiv");
+        getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj2) {
+            if (resultObj2.status === "ok") {
+                comments = resultObj2.data;
+                // let div = document.getElementById("commentdiv");
 
-            Showcomments(comments);
+                Showcomments(comments);
 
-            //Al hacer clicl en el boton enviar, ejecuta la funcion para insertar comentario
-            document.getElementById("BtnComment").addEventListener("click", function () {
+                //Al hacer clicl en el boton enviar, ejecuta la funcion para insertar comentario
+                document.getElementById("BtnComment").addEventListener("click", function () {
 
-                insertCommment();
-                document.getElementById("newComment").scrollIntoView();
+                    insertCommment();
+                    document.getElementById("newComment").scrollIntoView();
+                });
+
+            }
+
+            getJSONData(PRODUCTS_URL).then(function (resultObj3) {
+                if (resultObj3.status === "ok") {
+                    item = resultObj3.data;
+
+                    relatedProduct(product, item);
+
+
+                }
             });
-        }
+
+        });
+
     });
+
+
 
 });

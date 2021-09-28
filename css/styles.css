@@ -205,9 +205,35 @@ padding-top: 20px;
   padding-bottom: 5px;
 }
 
-
-
 .fa{
 
   padding-left: 5px;
 }
+
+.dropdown .menu .option:hover{
+	background: lightgray;
+}
+
+.dropdown .title{
+	margin: .3em .3em .3em .3em;	
+	width: 100%;
+}
+
+.dropdown .title .fa-angle-right{
+	float: right;
+	margin-right: .7em;
+	transition: transform .3s;
+}
+
+#costCard{
+
+  text-align: center;
+  font-size:40px;
+  margin: 0%;
+}
+
+.cardFoot{
+
+  background-color:lightgray;
+}
+
