@@ -56,12 +56,7 @@ const PrimeraLetraMayus = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-//Al elementeo con id usu se le inserta el nombre del usuario
-// const usuario = () => {
-//   const div = document.getElementById("usu");
-//   const usuario = localStorage.getItem("usu");
-//   div.innerHTML = PrimeraLetraMayus(usuario);
-// }
+
 
 const showUser = () => {
 
