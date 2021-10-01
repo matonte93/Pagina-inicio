@@ -135,6 +135,7 @@ const insertCommment = () => {
 
 //Pre-cargo el nombre de usuario en el campo de usuario al ingrear el comentario
 const GetNameUser = () => {
+
     const user = localStorage.getItem("usu");
     document.getElementById("commentuser").value = user;
 
@@ -145,11 +146,9 @@ const relatedProduct = (array1, array2) => {
     htmlContentToAppend = "";
 
     for (i = 0; i < array1.relatedProducts.length; i++) {
-        const related = array1.relatedProducts[i];
-        console.log(related);
-        let arr = array2[related];
-        console.log(arr);
 
+        const related = array1.relatedProducts[i];
+        let arr = array2[related];
         htmlContentToAppend += `
 
         <div class="card">
@@ -165,10 +164,9 @@ const relatedProduct = (array1, array2) => {
      </div>
 
         `
-
     }
 
-    card.innerHTML += htmlContentToAppend;
+    document.getElementById("card").innerHTML += htmlContentToAppend;
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
