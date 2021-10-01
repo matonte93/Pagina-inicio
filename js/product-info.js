@@ -157,11 +157,11 @@ const relatedProduct = (array1, array2) => {
          <h5 class="card-title">` + arr.name + `</h5>
              <p class="card-text">` + arr.description + `</p>
           </div>
-      <div class="cardFoot">
-      <p id="costCard">` + arr.currency + ` ` + arr.cost + `</p>
-      <small class="text-muted">Vendidos: ` + arr.soldCount + ` </small>
-       </div>
-     </div>
+        <div class="cardFoot">
+         <p id="costCard">` + arr.currency + ` ` + arr.cost + `</p>
+         <small class="text-muted">Vendidos: ` + arr.soldCount + ` </small>
+         </div>
+        </div>
 
         `
     }
