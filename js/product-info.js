@@ -5,37 +5,36 @@ function ShowProductGallery(array) {
 
     let htmlContentToAppend = "";
 
-htmlContentToAppend = `
-
-`
-
     for (let i = 0; i < array.length; i++) {
         let image = array[i];
 
         htmlContentToAppend += `
-        
-          <div class="carousel-item active">
-            <img src="` + image + `" class="d-block w-100" alt="...">
-          </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="` + image + `" alt="">
+            </div>
+        </div>
         `
 
+        document.getElementById("gallery").innerHTML = htmlContentToAppend;
     }
-
-    htmlContentToAppend += `
-
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-
-    `
-
-    document.getElementById("carousel-div").innerHTML = htmlContentToAppend;
 }
+
+//     htmlContentToAppend += `
+
+//     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+//     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+//     <span class="sr-only">Previous</span>
+//   </a>
+//   <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+//     <span class="carousel-control-next-icon" aria-hidden="true"></span>
+//     <span class="sr-only">Next</span>
+//   </a>
+
+//     `
+
+   
+
 //Funcion para cargar los comentarios desde el array
 function Showcomments(array) {
 
