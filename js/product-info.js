@@ -150,10 +150,12 @@ const relatedProduct = (array1, array2) => {
         const related = array1.relatedProducts[i];
         let arr = array2[related];
         htmlContentToAppend += `
-
+        
         <div class="card">
+        <a href="#" class="list-group-item" id="prodinf">
             <img src="` + arr.imgSrc + `" class="card-img-top" alt="...">
         <div class="card-body">
+        
          <h5 class="card-title">` + arr.name + `</h5>
              <p class="card-text">` + arr.description + `</p>
           </div>
@@ -161,8 +163,9 @@ const relatedProduct = (array1, array2) => {
          <p id="costCard">` + arr.currency + ` ` + arr.cost + `</p>
          <small class="text-muted">Vendidos: ` + arr.soldCount + ` </small>
          </div>
+         </a>
         </div>
-
+        
         `
     }
 
