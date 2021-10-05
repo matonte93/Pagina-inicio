@@ -3,7 +3,7 @@ let filtro = "ascen";
 let campo = "cost";
 var minC = undefined;
 var maxC = undefined;
-
+const text = document.querySelector('#contents');
 
 //Funcion para recorrer e imprimir en pantalla un array
 function MostrarProductos(array) {
@@ -14,9 +14,9 @@ function MostrarProductos(array) {
         let productos = array[a];
 
         if (((minC == undefined) || (minC != undefined && parseInt(productos.cost) >= minC)) &&
-            ((maxC == undefined) || (maxC != undefined && parseInt(productos.cost) <= maxC))){
+            ((maxC == undefined) || (maxC != undefined && parseInt(productos.cost) <= maxC))) {
 
-        htmlContentToAppend += `
+            htmlContentToAppend += `
         <a href="product-info.html" id="pro">
         <div class="list-group-item list-group-item-action">
             <div class="row">
@@ -35,9 +35,10 @@ function MostrarProductos(array) {
         </div>
         </a>
         `
-        body.innerHTML = htmlContentToAppend;
+            body.innerHTML = htmlContentToAppend;
+        }
     }
-}}
+}
 
 //Funcion para ordenar las arrays antes de mostrarlas usando sort
 const OrdenarDatosyMostrar = (array, campo, filtro) => {
@@ -57,7 +58,56 @@ const OrdenarDatosyMostrar = (array, campo, filtro) => {
     MostrarProductos(array);
 };
 
+const search = (array) => {
 
+    
+    const body = document.getElementById("containerprin");
+    body.innerHTML = "";
+    let htmlContentToAppend = "";
+    let content = text.value.toLowerCase();
+    console.log(content);
+    for (product of array) {
+        let nomb = product.name.toLowerCase();
+        if (nomb.indexOf(content) !== -1) {
+
+            htmlContentToAppend += `
+            
+            <a href="product-info.html" id="pro">
+            <div class="list-group-item list-group-item-action">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
+                    </div>
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">`+ product.name + `</h4>
+                        </div>
+                    </div>
+                    <small class="text-muted">` + product.description + `</small>
+                    
+                </div>
+                <h4 id="precio">` + product.currency + " " + product.cost + ` </h4>
+            </div>
+            </a>
+            `
+            body.innerHTML = htmlContentToAppend;
+
+        }
+
+    }
+
+    if(body.innerHTML === ""){
+
+            htmlContentToAppend += `
+            <br>
+            <br>
+            <h2 class="text-center"> Sin coincidencias...</h2>
+            `
+            
+            body.innerHTML = htmlContentToAppend;
+    }
+
+}
 
 
 
@@ -72,6 +122,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
             //Muestro las categorías ordenadas
             OrdenarDatosyMostrar(productosArray, campo, filtro);
         }
+    });
+
+    document.getElementById("contents").addEventListener("keyup", () => {
+        search(productosArray);
     });
 
     //Agregos los eventos correspondientes para darle funcionalidad a los botones de filtrado
@@ -96,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     });
 
-    document.getElementById("btnlimpiar").addEventListener("click", function(){
+    document.getElementById("btnlimpiar").addEventListener("click", function () {
         document.getElementById("minimo").value = "";
         document.getElementById("maximo").value = "";
 
@@ -106,21 +160,21 @@ document.addEventListener("DOMContentLoaded", function (e) {
         MostrarProductos(productosArray);
     });
 
-    document.getElementById("btnfiltrar").addEventListener("click", function(){
+    document.getElementById("btnfiltrar").addEventListener("click", function () {
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
         //de productos por categoría.
         minC = document.getElementById("minimo").value;
         maxC = document.getElementById("maximo").value;
 
-        if ((minC != undefined) && (minC != "") >= 0){
+        if ((minC != undefined) && (minC != "") >= 0) {
             minC = minC;
-        }else{
+        } else {
             minC = undefined;
         }
 
         if ((maxC != undefined) && (maxC != "") >= 0) {
             maxC = maxC;
-        }else{
+        } else {
             maxC = undefined;
         }
 

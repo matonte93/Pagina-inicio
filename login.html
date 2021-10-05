@@ -6,6 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
+  <meta name="google-signin-client_id" content="1008493293047-ufcu50mt9d0eabl6pi5o0a613a200gl0.apps.googleusercontent.com">
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
@@ -89,9 +90,6 @@
       font-size: 25px;
     }
 
-    /* .login a {
-      padding-top: 50px;
-    } */
   </style>
 </head>
 
@@ -109,8 +107,9 @@
         <label for="password">Contraseña</label>
         <input id="TxtPass" type="password" placeholder="Ingreselo Aquí!" required>
 
+        <!--Botones-->
         <input id="BtnSubmit" type="button" value="Ingresar">
-
+        <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
         <!-- <a class="login-rec" href="">Lost your password?</a> -->
 
 
@@ -121,6 +120,7 @@
 
 
   <script src="js/login.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 
 </html>

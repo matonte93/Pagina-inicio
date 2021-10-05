@@ -22,6 +22,6 @@ const loggear = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     
-    //Asocioamos un evento al boton de loggear para que ejecute la funcion al darle click
+    //Asociamos un evento al boton de loggear para que ejecute la funcion al darle click
     document.getElementById("BtnSubmit").addEventListener("click", loggear);
 });
