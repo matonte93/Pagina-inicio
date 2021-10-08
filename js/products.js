@@ -65,7 +65,7 @@ const search = (array) => {
     body.innerHTML = "";
     let htmlContentToAppend = "";
     let content = text.value.toLowerCase();
-    console.log(content);
+   
     for (product of array) {
         let nomb = product.name.toLowerCase();
         if (nomb.indexOf(content) !== -1) {
@@ -120,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             productosArray = resultObj.data;
             hideSpinner();
             //Muestro las categorías ordenadas
+            console.log(productosArray);
             OrdenarDatosyMostrar(productosArray, campo, filtro);
         }
     });
