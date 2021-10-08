@@ -48,37 +48,50 @@ const printCart = (array) => {
             <div class="card mb-3">
                 <div class="card-body">
               
-                    <form>
+            <form>
                     
-                        <div class="form-group"> 
+            <div class="form-group" > 
                         
-                        <label for="pet-select">Seleccionar metodo de envio:</label>
+                <label for="pet-select">Seleccionar metodo de envio:</label>
 
-                <select name="delivery" id="select_delivery">
-                <option value="">Ingresar opción</option>
+                <select name="delivery" id="select_delivery" requiered>
+                <option value="0">Ingresar opción</option>
                 <option value="0.05">Standar</option>
                  <option value="0.07">Express</option>
                 <option value="0.15">Premium</option>
                 </select>
+                <hr>
+                <label id="country">Pais: <input type="text" id="countryinput" style="width : 90px"></label>
+                <br>
+                <label id="street">Calle: <input type="text" id="streetinput" style="width : 90px"></label>
+                <br>
+                <label id="numberhouse">Número: <input type="text" id="numberinput" style="width : 90px"></label>
+                <br>
+                <label id="corner">Esquina: <input type="text" id="cornerinput" style="width : 90px"></label>
+              </div>
               
-                        </div>
-                    </form>
+            </form>
+                    
                     <div class="card" id="metodoPurch">
+                    
                     <dl class="dlist-align">
                     <lable id="labelPurch"><strong> Metodo de pago:</strong> </label>
                     <br>
                     <br>
-                    <input type="radio" name="purch"> <strong>Trjeta de Credito</strong>
+                    <form id="formPurch">
+                    <input type="radio" name="purch" value="credit" id="credit"> <strong>Trjeta de Credito</strong>
                     <br>
-                    <input type="radio" name="purch"> <strong>Transf. Bancaria</strong>
+                    <input type="radio" name="purch" value="bank" id="bank"> <strong>Transf. Bancaria</strong>
+                    </form>
                     </dl>
                     </div>
                 </div>
             </div>
-
+            
             <div id="infoPurch" class="card mb-3">
-            </div>
 
+            </div>
+           
             <div class="card">
                 <div class="card-body">
                     <dl class="dlist-align">
@@ -107,7 +120,7 @@ const printCart = (array) => {
 
 }
 
-const cart = () =>{
+const cart = () => {
 
     count = document.getElementById("numbercount").value;
     let totalLabel = document.getElementById("Total");
@@ -121,8 +134,36 @@ const cart = () =>{
     let costDelivery = delivery * subTotalCost;
     let total = subTotalCost + costDelivery;
     send.innerHTML = "$ " + costDelivery.toFixed(2);
-    subTotal.innerHTML =  "$ " + subTotalCost;
+    subTotal.innerHTML = "$ " + subTotalCost;
     totalLabel.innerHTML = "$ " + total;
+
+}
+
+const methodPurch = () => {
+
+    
+    htmltocontentAppen = "";
+    let methodDiv = document.getElementById("infoPurch");
+    let option1 = document.getElementById("credit");
+    let option2 = document.getElementById("bank");
+    
+    if (option1.checked) {
+        
+        methodDiv.innerHTML = "";
+        htmltocontentAppen += `
+        <h1>credito<h1>
+        `
+        methodDiv.innerHTML = htmltocontentAppen;
+
+    }else if(option2.checked){
+        methodDiv.innerHTML = "";
+        htmltocontentAppen += `
+        <h1>banco<h1>
+        `
+        methodDiv.innerHTML = htmltocontentAppen;
+    }
+
+
 
 }
 
@@ -135,26 +176,27 @@ document.addEventListener("DOMContentLoaded", function (e) {
             cartProducts = resultObj.data;
             hideSpinner();
             printCart(cartProducts);
-            // let subTotal = document.getElementById("subTotal");
-            // let count = document.getElementById("numbercount").value;
-            // let unitCost = products.unitCost;
-            // let totalunit = document.getElementById("total-unit");
-            // let subTotalCost = count * unitCost;
-            // totalunit.innerHTML = "$" + subTotalCost;
-            // subTotal.innerHTML =  "$" + subTotalCost;
+            
             cart()
-
+            methodPurch();
         }
 
         document.getElementById("numbercount").addEventListener("click", () => {
-           
+
             cart();
 
         })
 
         document.getElementById("select_delivery").addEventListener("click", () => {
-          
-           cart();
+
+            cart();
+        })
+
+        
+        document.getElementById("formPurch").addEventListener("change", () => {
+
+            methodPurch();
+            
         })
     });
 
