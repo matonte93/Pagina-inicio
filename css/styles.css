@@ -252,11 +252,12 @@ body {
 
 #cont-prin{
   align-content: center;
-  text-align-last: center;
+  /* text-align-last: center; */
 }
 
 .container-fluid {
     margin-top: 70px;
+    
     
     
 }
@@ -372,4 +373,18 @@ a {
 margin-top: 20px;
 text-align: left;
 
+}
+
+.mounthYear{
+  
+  float:initial;
+  text-align: center;
+  display:flex;
+  padding-top: 10px;
+}
+
+.mounthYear label{
+
+  padding-left: 15px;
+  padding-right: 8px;
 }

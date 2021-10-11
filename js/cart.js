@@ -18,7 +18,7 @@ const printCart = (array) => {
                                 <th scope="col">Productos</th>
                                 <th scope="col" width="120">Cantidad</th>
                                 <th scope="col" width="120">Precio Unit.</th>
-                                <th scope="col" class="text-right d-none d-md-block" width="200">Precio Total Unit.</th>
+                                <th scope="col" class="d-none d-md-block" width="200">Precio Total Unit.</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,43 +52,42 @@ const printCart = (array) => {
                     
             <div class="form-group" > 
                         
-                <label for="pet-select">Seleccionar metodo de envio:</label>
+                <label for="pet-select"><strong>Seleccionar metodo de envio:</strong></label>
 
                 <select name="delivery" id="select_delivery" requiered>
-                <option value="0">Ingresar opción</option>
+                <option value="0" disabled selected>Ingresar opción</option>
                 <option value="0.05">Standar</option>
                  <option value="0.07">Express</option>
                 <option value="0.15">Premium</option>
                 </select>
-                <hr>
-                <label id="country">Pais: <input type="text" id="countryinput" style="width : 90px"></label>
                 <br>
-                <label id="street">Calle: <input type="text" id="streetinput" style="width : 90px"></label>
                 <br>
-                <label id="numberhouse">Número: <input type="text" id="numberinput" style="width : 90px"></label>
+                <label id="country"><strong>Pais: </strong><input type="text" id="countryinput" style="width : 90px"></label>
                 <br>
-                <label id="corner">Esquina: <input type="text" id="cornerinput" style="width : 90px"></label>
+                <label id="street"><strong>Calle: </strong><input type="text" id="streetinput" style="width : 90px"></label>
+                <br>
+                <label id="numberhouse"><strong>Número: </strong><input type="text" id="numberinput" style="width : 90px"></label>
+                <br>
+                <label id="corner"><strong>Esquina: </strong><input type="text" id="cornerinput" style="width : 90px"></label>
               </div>
               
             </form>
+                    <hr>
+                    <div class="" id="metodoPurch">
                     
-                    <div class="card" id="metodoPurch">
-                    
-                    <dl class="dlist-align">
                     <lable id="labelPurch"><strong> Metodo de pago:</strong> </label>
                     <br>
-                    <br>
-                    <form id="formPurch">
+                    <form style="padding-top : 10px" id="formPurch">
                     <input type="radio" name="purch" value="credit" id="credit"> <strong>Trjeta de Credito</strong>
                     <br>
                     <input type="radio" name="purch" value="bank" id="bank"> <strong>Transf. Bancaria</strong>
                     </form>
-                    </dl>
+                    
                     </div>
                 </div>
             </div>
             
-            <div id="infoPurch" class="card mb-3">
+            <div id="infoPurch" class="card mb-3 form-group">
 
             </div>
            
@@ -128,6 +127,8 @@ const cart = () => {
     let unitCost = products.unitCost;
     let send = document.getElementById("delivery");
     let totalunit = document.getElementById("total-unit");
+
+    //Aca calculamos el total del las unidades que lleva de ese producto
     let subTotalCost = count * unitCost;
     totalunit.innerHTML = "$" + subTotalCost;
     let delivery = document.getElementById("select_delivery").value;
@@ -141,24 +142,46 @@ const cart = () => {
 
 const methodPurch = () => {
 
-    
+
     htmltocontentAppen = "";
     let methodDiv = document.getElementById("infoPurch");
     let option1 = document.getElementById("credit");
     let option2 = document.getElementById("bank");
-    
+
     if (option1.checked) {
-        
+
         methodDiv.innerHTML = "";
         htmltocontentAppen += `
-        <h1>credito<h1>
+        <label><strong>N° Tarjeta</strong></label>
+        <input type="text" id="cardNumber" maxlength="19" autocomplete="off">
+        <br>
+        <label><strong>Nombre Titular</strong></label>
+        <input type="text" id="cardName" maxlength="19" autocomplete="off">
+        <br>
+        <label style="text-align: center"><strong>Vencimiento</strong></label>
+
+        <div class="mounthYear">
+        <label style="text-align: left">Mes</label>
+        <br>
+        <select style="width : 26%" name="mes" id="selectMes">
+        <br>
+        <option disabled selected>Mes</option>
+        </select>
+        
+        <label style="">Año</label>
+        
+        <select style="width : 26%" name="mes" id="selectMes">
+        <option disabled selected>Año</option>
+        
+        </select>
+        </div>
         `
         methodDiv.innerHTML = htmltocontentAppen;
 
-    }else if(option2.checked){
+    } else if (option2.checked) {
         methodDiv.innerHTML = "";
         htmltocontentAppen += `
-        <h1>banco<h1>
+        
         `
         methodDiv.innerHTML = htmltocontentAppen;
     }
@@ -176,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             cartProducts = resultObj.data;
             hideSpinner();
             printCart(cartProducts);
-            
+
             cart()
             methodPurch();
         }
@@ -192,11 +215,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
             cart();
         })
 
-        
+
         document.getElementById("formPurch").addEventListener("change", () => {
 
             methodPurch();
-            
+
         })
     });
 

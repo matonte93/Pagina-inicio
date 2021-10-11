@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             productosArray = resultObj.data;
             hideSpinner();
             //Muestro las categorías ordenadas
-            console.log(productosArray);
+            
             OrdenarDatosyMostrar(productosArray, campo, filtro);
         }
     });
