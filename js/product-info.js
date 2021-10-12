@@ -141,14 +141,14 @@ const GetNameUser = () => {
 
 }
 
-const relatedProduct = (array1, array2) => {
+const relatedProduct = (object, array) => {
 
     htmlContentToAppend = "";
 
-    for (i = 0; i < array1.relatedProducts.length; i++) {
+    for (i = 0; i < object.relatedProducts.length; i++) {
 
-        const related = array1.relatedProducts[i];
-        let arr = array2[related];
+        const related = object.relatedProducts[i];
+        let arr = array[related];
         htmlContentToAppend += `
         
         <div class="card">

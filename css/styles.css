@@ -388,3 +388,21 @@ text-align: left;
   padding-left: 15px;
   padding-right: 8px;
 }
+
+.ccv{
+
+  text-align: center;
+  padding-top: 9%;
+  
+}
+
+.back{
+border-style: double;
+  border-color: black;
+}
+
+.back hr{
+  background-color: #212529;
+  
+}
+

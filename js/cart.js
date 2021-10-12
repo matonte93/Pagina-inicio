@@ -7,10 +7,11 @@ const printCart = (array) => {
     for (products of array.articles) {
 
         htmltocontentAppen += `
+        <form id="all">
         <div class="container-fluid">
     <div class="row">
         <aside class="col-lg-9">
-            <div class="card">
+            <div class="card back">
                 <div class="table-responsive">
                     <table class="table table-borderless table-shopping-cart">
                         <thead class="text-muted">
@@ -44,9 +45,9 @@ const printCart = (array) => {
                 </div>
             </div>
         </aside>
-        <aside class="col-lg-3">
+        <aside class="col-lg-3 back">
             <div class="card mb-3">
-                <div class="card-body">
+                <div style="padding-bottom : 0%" class="card-body">
               
             <form>
                     
@@ -87,12 +88,14 @@ const printCart = (array) => {
                 </div>
             </div>
             
-            <div id="infoPurch" class="card mb-3 form-group">
+            <div id="infoPurch" class="card">
 
             </div>
            
+            
             <div class="card">
-                <div class="card-body">
+                <div style="padding-top : 0%" class="card-body">
+                <hr>
                     <dl class="dlist-align">
                         <dt>SubTotal: </dt>
                         <dd class="text-right ml-3"><label id="subTotal"> </label></dd>
@@ -105,12 +108,14 @@ const printCart = (array) => {
                         <dt>Total:</dt>
                         <dd class="text-right text-dark b ml-3"><strong><label id="Total">$ 0.00</label></strong></dd>
                     </dl>
-                     <a href="#" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Comprar</a>
+                     <button id="purchBtn" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Comprar</button>
                 </div>
             </div>
         </aside>
     </div>
 </div>  
+
+</form>
     `
         body.innerHTML = htmltocontentAppen;
     }
@@ -172,9 +177,15 @@ const methodPurch = () => {
         
         <select style="width : 26%" name="mes" id="selectMes">
         <option disabled selected>Año</option>
-        
         </select>
+
         </div>
+        
+        <div class="ccv">
+        <label>CCV</label>
+        <input style="width : 20%" type="text" id="ccv" maxlength="3" autocomplete="off">
+        </div>
+        
         `
         methodDiv.innerHTML = htmltocontentAppen;
 
@@ -188,6 +199,12 @@ const methodPurch = () => {
 
 
 
+}
+
+const purchBtn = () =>{
+
+    document.getElementById("all").reset();
+    alert("Gracias por su compra!! En unos momentos le llegara un mail para confirmar!!")
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -215,10 +232,16 @@ document.addEventListener("DOMContentLoaded", function (e) {
             cart();
         })
 
-
+        
         document.getElementById("formPurch").addEventListener("change", () => {
 
             methodPurch();
+
+        })
+
+        document.getElementById("purchBtn").addEventListener("click", () => {
+
+            purchBtn();
 
         })
     });
