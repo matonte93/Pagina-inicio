@@ -45,19 +45,50 @@
     </div>
   </nav>
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
-  </div>
-  <footer class="text-muted bg-light">
-    <div class="container">
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
+
+    <h1 class="title"> Datos Personales</h1>
+    <br> 
+    
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="inputEmail4">Email</label>
+          <input type="email" class="form-control" id="inputEmail4" placeholder="Email...">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="inputName4">Nombre</label>
+          <input type="text" class="form-control" id="inputName" placeholder="Nombre...">
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="inputAge">Edad</label>
+          <input type="number" class="form-control" id="inputAge" max="120" placeholder="Edad...">
+        </div>
+        
+        <div class="form-group col-md-2">
+          <label for="inputPhone">Número de contacto</label>
+          <input type="number" class="form-control" id="inputPhone" placeholder="Número....">
+        </div>
+      </div>
+      <br>
+      <button id="btnSave" type="submit" class="btn btn-primary">Guardar/Modificar</button>
+    </form>
+    <!-- <div class="profile">
+      <form action="">
+
+        <label>Nombre: </label><input type="text" name="name" id="name"> <br><br>
+        <label>Apellido: </label><input type="text" name="lastname" id="lastname"> <br><br>
+        <label>Correo: </label><input type="text" name="email" id="email"> <br><br>
+        <label>Teléfono: </label><input type="number" name="numberPhone" id="numberPhone"> <br><br>
+        
+        <br><br>
+        
+        <button type="button"id="guardardatos"> Grabar</button>
+
+      </form>
+    </div> -->
   <div class="alert fade alert-success" role="alert" id="alertResult">
     <span id="resultSpan"></span>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
