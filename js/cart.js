@@ -138,7 +138,7 @@ const cart = (products) => {
 
     for (let object of products.articles) {
     let unitCost = object.unitCost;
-    console.log(unitCost);
+    
     let send = document.getElementById("delivery");
     let totalunit = document.getElementById("total-unit");
 

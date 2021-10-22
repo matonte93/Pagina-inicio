@@ -23,42 +23,45 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      
+
     </div>
   </nav>
 
-<main role="main" class="pb-5">
-  <div class="text-center p-4">
-    <h2>Productos</h2>
-    <p class="lead">Verás aquí todas los productos de la categoría.</p>
-  </div>
-  <!-- <div class="titulo1">
+  <main role="main" class="pb-5">
+    <div class="text-center p-4">
+      <h2>Productos</h2>
+      <p class="lead">Verás aquí todas los productos de la categoría.</p>
+    </div>
+    <!-- <div class="titulo1">
     <h2>Productos</h2>
   </div> -->
 
-  <!-- Botones de filtrado-->
-  <div class="container">
-    <div class="row">
-      <div class="col text-right">
-        <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
-          <label class="btn btn-light active" id="ascen"><!--sortAsc-->
-            <input type="radio" name="filtro" id="as" checked>Ascen.(Precio)
-          </label>
-          <label class="btn btn-light" id="desce"><!--sortDesc-->
-            <input type="radio" name="filtro" id="des">Desc.(Precio)
-          </label>
-          <label class="btn btn-light" id="relev">
-            <input type="radio" name="filtro" id="rel" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Más Vendidos
-          </label>
+    <!-- Botones de filtrado-->
+    <div class="container">
+      <div class="row">
+        <div class="col text-right">
+          <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+            <label class="btn btn-light active" id="ascen">
+              <!--sortAsc-->
+              <input type="radio" name="filtro" id="as" checked>Ascen.(Precio)
+            </label>
+            <label class="btn btn-light" id="desce">
+              <!--sortDesc-->
+              <input type="radio" name="filtro" id="des">Desc.(Precio)
+            </label>
+            <label class="btn btn-light" id="relev">
+              <input type="radio" name="filtro" id="rel" autocomplete="off"><i
+                class="fas fa-sort-amount-down mr-1"></i>Más Vendidos
+            </label>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="row justify-content-end">
-      <div class="col-md-6"></div>
+      <div class="row justify-content-end">
+        <div class="col-md-6"></div>
         <div class="col-md-6 col-sm-12 mb-1 container">
           <div class="row container p-0 m-0">
-            
+
             <div class="col">
               <p class="font-weight-normal text-right my-2">Cant.</p>
             </div>
@@ -77,17 +80,20 @@
             </div>
           </div>
         </div>
+      </div>
+
     </div>
 
-  </div>
+    <!--Contenedor donde se imprimen los preoductos-->
+    
+      <div class="container">
+        <div id="containerprin" class="row">
 
-  <!--Contenedor donde se imprimen los preoductos-->
-  <div id="containerprin" class="container">
+        </div>
+      </div>
+    
+  </main>
 
-  </div>
-
-</main>
-  
   <footer class="text-muted bg-light">
     <div class="container">
       <p class="float-right">

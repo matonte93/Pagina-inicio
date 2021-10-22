@@ -91,6 +91,7 @@ const showUser = () => {
 
 const closeSesion = () => {
   localStorage.removeItem("usu");
+  localStorage.removeItem("profile");
   window.location.href = "login.html";
 }
 
