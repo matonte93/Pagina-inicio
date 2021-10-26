@@ -1,9 +1,11 @@
+"use strict";
 
+let cartProducts = [];
 
 const printCart = (objectCart) => {
+
     const body = document.getElementById("fluid");
     let htmltocontentAppen = "";
-
 
     for (let products of objectCart.articles) {
 
@@ -151,6 +153,7 @@ const cart = (products) => {
     let costDelivery = delivery * subTotalCost;
 
     let total = subTotalCost + costDelivery;
+    
     send.innerHTML = "$ " + costDelivery.toFixed(2);
     subTotal.innerHTML = "$ " + subTotalCost;
     totalLabel.innerHTML = "$ " + total;
@@ -204,6 +207,7 @@ const methodPurch = () => {
         methodDiv.innerHTML = htmltocontentAppen;
 
     } else if (option2.checked) {
+
         methodDiv.innerHTML = "";
         htmltocontentAppen += `
 

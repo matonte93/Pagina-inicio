@@ -3,24 +3,17 @@
 let profileArr;
 
 function saveModify() {
+
     profileArr = [];
+
     let email = document.getElementById("inputEmail4").value;
     let name = document.getElementById("inputName").value;
     let lastName = document.getElementById("inputLastName").value;
     let age = document.getElementById("inputAge").value;
     let numberPhone = document.getElementById("inputPhone").value;
 
-    if (email && name && lastName && age && numberPhone) {
-
-        profileArr.push(email, name, lastName, age, numberPhone);
-        console.log(profileArr);
-        localStorage.setItem("profile", JSON.stringify(profileArr));
-
-        alert("Registro con éxito");
-    } else {
-
-        alert("Rellene los campos!");
-    }
+    profileArr.push(email, name, lastName, age, numberPhone);
+    localStorage.setItem("profile", JSON.stringify(profileArr));
 
 };
 
@@ -48,9 +41,10 @@ function showModify() {
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
 
-    if(JSON.parse(localStorage.getItem("profile"))){
-    showModify();
+    if (JSON.parse(localStorage.getItem("profile"))) {
+        showModify();
     };
+    
     document.getElementById("btnSave").addEventListener("click", saveModify);
 
 });
