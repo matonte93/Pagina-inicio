@@ -1,3 +1,4 @@
+
 var product = {};
 
 //Funcion para mostrar las fotos en forma de galeria
@@ -198,10 +199,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
             //Muestro las imagenes en forma de galería
             ShowProductGallery(product.images);
             GetNameUser();
-        }
+        };
 
         getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj2) {
             if (resultObj2.status === "ok") {
+                
                 comments = resultObj2.data;
 
                 Showcomments(comments);
