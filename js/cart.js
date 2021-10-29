@@ -164,7 +164,7 @@ const cart = (products) => {
 const methodPurch = () => {
 
 
-    htmltocontentAppen = "";
+    let htmltocontentAppen = "";
     let methodDiv = document.getElementById("infoPurch");
     let option1 = document.getElementById("credit");
     let option2 = document.getElementById("bank");
