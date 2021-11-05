@@ -370,30 +370,10 @@ a {
 }
 
 #metodoPurch{
-margin-top: 20px;
-text-align: left;
 
-}
-
-.mounthYear{
-  
-  float:initial;
+  flex: none;
+  align-content: center;
   text-align: center;
-  display:flex;
-  padding-top: 10px;
-}
-
-.mounthYear label{
-
-  padding-left: 15px;
-  padding-right: 8px;
-}
-
-.ccv{
-
-  text-align: center;
-  padding-top: 9%;
-  
 }
 
 .back{
@@ -403,7 +383,14 @@ border-style: double;
 
 .back hr{
   background-color: #212529;
-  
+
 }
 
+#myModal{
+text-align: center;
+  font-family: sans-serif;
+}
 
+#myModal label{
+  padding-top: 10px;
+}

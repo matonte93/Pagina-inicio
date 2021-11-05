@@ -53,11 +53,9 @@ const userOk = () => {
 }
 
 //Convertimos la primera letra del nombre de usario a mayus
-const PrimeraLetraMayus = (str) => {
+const fristLetterMayus = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
-
-
 
 const showUser = () => {
 
@@ -106,3 +104,4 @@ document.addEventListener("DOMContentLoaded", function (e) {
   });
 
 });
+

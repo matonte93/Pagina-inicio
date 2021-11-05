@@ -13,8 +13,6 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
   <style>
-
-    
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -46,15 +44,52 @@
     </div>
   </nav>
 
+  <div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="titleModal1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="titleModal1"><strong>Selecciones metodo de pago</strong></h3>
+          <button class="close" data-dismiss="modal" aria-label="Cerrar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="metod">
+            <h4 id="labelPurch">Metodo de pago: </h4>
+            <br>
+            <form id="formPurch">
+              <input type="radio" name="purch" value="credit" id="credit" requiered> <strong>Trjeta de
+                Credito</strong>
+              <br>
+              <input type="radio" name="purch" value="bank" id="bank" requiered> <strong>Transf. Bancaria</strong>
+            </form>
+          </div>
+
+          <form id="formMetod">
+            <div id="infoPurch">
+
+            </div>
+          </form>
+
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cerrar</button>
+            <button class="btn btn-success" type="button">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="cont-prin" class="container mt-5">
-    <form id="all">
+
     <div id="fluid" class="container-fluid">
 
+
+
     </div>
-  </form>
-  
+
   </div>
-  
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

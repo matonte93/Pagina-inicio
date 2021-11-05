@@ -55,7 +55,7 @@ const printCart = (objectCart) => {
             
                     
     `
-        
+
     }
 
     htmltocontentAppen += `
@@ -77,30 +77,20 @@ const printCart = (objectCart) => {
     <br>
     <label id="street"><strong>Calle: </strong><input type="text" id="streetinput" style="width : 90px" requiered></label>
     <br>
-    <label id="numberhouse"><strong>Número: </strong><input type="text" id="numberinput" style="width : 90px" requiered></label>
+    <label id="numberHouse"><strong>Número: </strong><input type="text" id="numberinput" style="width : 90px" requiered></label>
     <br>
     <label id="corner"><strong>Esquina: </strong><input type="text" id="cornerinput" style="width : 90px" requiered></label>
   </div>
   
 </form>
         <hr>
-        <div class="" id="metodoPurch">
-        
-        <lable id="labelPurch"><strong> Metodo de pago:</strong> </label>
-        <br>
-
-        <form style="padding-top : 10px" id="formPurch">
-        <input type="radio" name="purch" value="credit" id="credit" requiered> <strong>Trjeta de Credito</strong>
-        <br>
-        <input type="radio" name="purch" value="bank" id="bank" requiered> <strong>Transf. Bancaria</strong>
-        </form>
+        <div id="metodoPurch">
+    
+        <button class="btn btn-success" data-toggle="modal" data-target="#myModal">Metodo de pago</button>
         
         </div>
     </div>
 
-<div id="infoPurch" class="card">
-
-</div>
 
 
 <div class="card">
@@ -118,7 +108,7 @@ const printCart = (objectCart) => {
             <dt>Total:</dt>
             <dd class="text-right text-dark b ml-3"><strong><label id="Total">$ 0.00</label></strong></dd>
         </dl>
-         <button form="all" id="purchBtn" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Comprar</button>
+         <button id="purchBtn" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Comprar</button>
     </div>
 </div>
 </aside>
@@ -139,24 +129,24 @@ const cart = (products) => {
     let subTotal = document.getElementById("subTotal");
 
     for (let object of products.articles) {
-    let unitCost = object.unitCost;
-    
-    let send = document.getElementById("delivery");
-    let totalunit = document.getElementById("total-unit");
+        let unitCost = object.unitCost;
 
-    //Aca calculamos el total del las unidades que lleva de ese producto
-    let subTotalCost = count * unitCost;
-    totalunit.innerHTML = "$" + subTotalCost;
+        let send = document.getElementById("delivery");
+        let totalunit = document.getElementById("total-unit");
 
-    //Calculamos envio 
-    let delivery = document.getElementById("select_delivery").value;
-    let costDelivery = delivery * subTotalCost;
+        //Aca calculamos el total del las unidades que lleva de ese producto
+        let subTotalCost = count * unitCost;
+        totalunit.innerHTML = "$" + subTotalCost;
 
-    let total = subTotalCost + costDelivery;
-    
-    send.innerHTML = "$ " + costDelivery.toFixed(2);
-    subTotal.innerHTML = "$ " + subTotalCost;
-    totalLabel.innerHTML = "$ " + total;
+        //Calculamos envio 
+        let delivery = document.getElementById("select_delivery").value;
+        let costDelivery = delivery * subTotalCost;
+
+        let total = subTotalCost + costDelivery;
+
+        send.innerHTML = "$ " + costDelivery.toFixed(2);
+        subTotal.innerHTML = "$ " + subTotalCost;
+        totalLabel.innerHTML = "$ " + total;
 
     }
 }
@@ -173,38 +163,40 @@ const methodPurch = () => {
 
         methodDiv.innerHTML = "";
         htmltocontentAppen += `
+        
         <br>
-        <label><strong>N° Tarjeta</strong></label>
-        <input type="text" id="cardNumber" maxlength="19" autocomplete="off" requiered>
+        <label><strong>N° Tarjeta: </strong></label>
+        <input type="number" id="cardNumber" maxlength="19" autocomplete="off" requiered>
         <br>
-        <label><strong>Nombre Titular</strong></label>
+        <label><strong>Nombre Titular: </strong></label>
         <input type="text" id="cardName" maxlength="19" autocomplete="off" requiered>
         <br>
-        <label style="text-align: center"><strong>Vencimiento</strong></label>
+        <label style="text-decoration: solid"><strong>Vencimiento: </strong></label>
 
         <div class="mounthYear">
-        <label style="text-align: left">Mes</label>
-        <br>
-        <select style="width : 26%" name="mes" id="selectMes" requiered>
-        <br>
+        <label>Mes</label>
+        
+        <select name="mes" id="selectMes" requiered>
         <option disabled selected>Mes</option>
         </select>
         
         <label style="">Año</label>
         
-        <select style="width : 26%" name="mes" id="selectMes" requiered>
+        <select name="year" id="selectYear" requiered>
         <option disabled selected>Año</option>
         </select>
 
         </div>
         
         <div class="ccv">
-        <label>CCV</label>
-        <input style="width : 20%" type="text" id="ccv" maxlength="3" autocomplete="off" requiered>
+        <label><strong>CCV: </strong></label>
+        <input style="width: 15%" type="text" id="ccv" maxlength="3" autocomplete="off" requiered>
         </div>
         
         `
         methodDiv.innerHTML = htmltocontentAppen;
+
+        mounths();
 
     } else if (option2.checked) {
 
@@ -212,17 +204,14 @@ const methodPurch = () => {
         htmltocontentAppen += `
 
         <div class="bankTrans">
-        <br>
-        <label><strong>Nro. de Cuenta</strong></label>
+        <hr>
+        <label><strong>Nro. de Cuenta: </strong></label>
         <input type="text" id="bankNumber" maxlength="12" autocomplete="off" requiered> 
         <br>
         <br>
         <label><strong>Banco</strong></label>
-        <br>
         <input type="text" id="bankName" maxlength="12" autocomplete="off" requiered> 
-        
         </div>
-        <br>
         `
         methodDiv.innerHTML = htmltocontentAppen;
     }
@@ -231,13 +220,45 @@ const methodPurch = () => {
 
 }
 
+const mounths = () => {
+
+    for (let i = 1; i <= 12; i++) {
+
+        let option = document.createElement("option");
+        option.value = i;
+        option.innerText = i;
+        document.getElementById("selectMes").appendChild(option);
+
+    }
+}
+
 const purchBtn = () => {
 
-    
+    let delivery = document.getElementById("select_delivery").value;
+    let country = document.getElementById("countryinput").value;
+    let street = document.getElementById("streetinput").value;
+    let numberHouse = document.getElementById("numberinput").value;
+    let corner = document.getElementById("cornerinput").value;
 
-    document.getElementById("all").reset();
-    alert("Gracias por su compra!! En unos momentos le llegara un mail para confirmar!!")
-} 
+
+    if (delivery === "0" || street === "" || country === "" || numberHouse === "" || corner === "") {
+        alert("uno esta vacio");
+    } else {
+        alert("exito");
+    }
+
+    // document.getElementById("all").reset();
+
+}
+
+const btnModal = () =>{
+    let cardNumber = document.getElementById("cardNumber").value;
+    let cardName = document.getElementById("cardName").value;
+    let mounth = document.getElementById("selectMes").value;
+    let year = document.getElementById("selectYear").value;
+    let ccv = document.getElementById("ccv").value;
+
+}
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -251,6 +272,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
             cart(cartProducts)
             methodPurch();
+
         }
 
         document.getElementById("numbercount").addEventListener("click", () => {
@@ -276,6 +298,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
             purchBtn();
 
         })
+
+        // for (let i = 1; i <= 12; i++) {
+
+        //     let option = document.createElement("option");
+        //     option.value = i;
+        //     option.innerText = i;
+        //     formMetod.selectMes.appendChild(option);
+        // }
     });
 
 
