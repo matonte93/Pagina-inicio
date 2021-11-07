@@ -2,6 +2,7 @@
 
 let cartProducts = [];
 
+//Carrito
 const printCart = (objectCart) => {
 
     const body = document.getElementById("fluid");
@@ -61,7 +62,8 @@ const printCart = (objectCart) => {
     htmltocontentAppen += `
 
     <div class="form-group" > 
-                        
+    
+    <form id="send">
     <label for="pet-select"><strong>Seleccionar metodo de envio:</strong></label>
 
     <select name="delivery" id="select_delivery" requiered>
@@ -82,7 +84,8 @@ const printCart = (objectCart) => {
     <label id="corner"><strong>Esquina: </strong><input type="text" id="cornerinput" style="width : 90px" requiered></label>
   </div>
   
-</form>
+  </form>
+  
         <hr>
         <div id="metodoPurch">
     
@@ -121,8 +124,8 @@ const printCart = (objectCart) => {
 
 }
 
+//Calculo tanto el sub total, como el envio y el total
 const cart = (products) => {
-
 
     let count = document.getElementById("numbercount").value;
     let totalLabel = document.getElementById("Total");
@@ -151,6 +154,7 @@ const cart = (products) => {
     }
 }
 
+//Le otorgo funcionalidad al modal de metodo de pago
 const methodPurch = () => {
 
 
@@ -161,41 +165,71 @@ const methodPurch = () => {
 
     if (option1.checked) {
 
+        
         methodDiv.innerHTML = "";
         htmltocontentAppen += `
         
-        <br>
+        <hr>
         <label><strong>N° Tarjeta: </strong></label>
-        <input type="number" id="cardNumber" maxlength="19" autocomplete="off" requiered>
+        <input type="text" id="cardNumber" maxlength="19">
         <br>
         <label><strong>Nombre Titular: </strong></label>
-        <input type="text" id="cardName" maxlength="19" autocomplete="off" requiered>
+        <input type="text" id="cardName" maxlength="19" autocomplete="off">
         <br>
         <label style="text-decoration: solid"><strong>Vencimiento: </strong></label>
 
         <div class="mounthYear">
         <label>Mes</label>
         
-        <select name="mes" id="selectMes" requiered>
-        <option disabled selected>Mes</option>
+        <select name="mes" id="selectMes">
+        <option value="0" disabled selected>Mes</option>
         </select>
         
         <label style="">Año</label>
         
-        <select name="year" id="selectYear" requiered>
-        <option disabled selected>Año</option>
+        <select name="year" id="selectYear">
+        <option value="0" disabled selected>Año</option>
         </select>
 
         </div>
         
         <div class="ccv">
         <label><strong>CCV: </strong></label>
-        <input style="width: 15%" type="text" id="ccv" maxlength="3" autocomplete="off" requiered>
+        <input style="width: 15%" type="text" id="ccv" maxlength="3" autocomplete="off">
         </div>
-        
+        <hr>
         `
         methodDiv.innerHTML = htmltocontentAppen;
 
+        document.getElementById("cardNumber").addEventListener("keyup", (e) => {
+
+            let valueCardNumber = e.target.value;
+   
+            document.getElementById("cardNumber").value = valueCardNumber.replace(/\s/g, "")
+            .replace(/\D/g, "")
+            .replace(/([0-9]{4})/g, "$1 ")
+            .trim(); 
+
+        });
+
+        document.getElementById("cardName").addEventListener("keyup", (e) =>{
+
+            let valueCardName = e.target.value;
+            document.getElementById("cardName").value = valueCardName
+            .replace(/[0-9]/g, "");
+        });
+
+        document.getElementById("ccv").addEventListener("keyup", (e) => {
+
+            let valueCCV = e.target.value;
+   
+            document.getElementById("ccv").value = valueCCV.replace(/\s/g, "")
+            .replace(/\D/g, "")
+            .trim(); 
+
+        });
+
+        years();
         mounths();
 
     } else if (option2.checked) {
@@ -208,18 +242,30 @@ const methodPurch = () => {
         <label><strong>Nro. de Cuenta: </strong></label>
         <input type="text" id="bankNumber" maxlength="12" autocomplete="off" requiered> 
         <br>
-        <br>
         <label><strong>Banco</strong></label>
         <input type="text" id="bankName" maxlength="12" autocomplete="off" requiered> 
         </div>
+        <hr>
         `
         methodDiv.innerHTML = htmltocontentAppen;
     }
 
-
-
 }
 
+//Año de vencimiento de tarjeta
+const years = () => {
+
+    const yearReal = new Date().getFullYear();
+    for (let i = yearReal; i <= yearReal + 8; i++) {
+        let option = document.createElement("option");
+        option.value = i;
+        option.innerText = i;
+        document.getElementById("selectYear").appendChild(option);
+    }
+
+}
+ 
+//Mes de vencimiento de tarjeta
 const mounths = () => {
 
     for (let i = 1; i <= 12; i++) {
@@ -232,6 +278,39 @@ const mounths = () => {
     }
 }
 
+const btnModalOk = () => {
+
+    let option1 = document.getElementById("credit");
+    let option2 = document.getElementById("bank");
+
+    if (option1.checked) {
+
+        let cardNumber = document.getElementById("cardNumber").value;
+        let cardName = document.getElementById("cardName").value;
+        let selectMes = document.getElementById("selectMes").value;
+        let selectYear = document.getElementById("selectYear").value;
+        let ccv = document.getElementById("ccv").value;
+
+        if (cardNumber === "" || cardName === "" || selectMes === "0" || selectYear === "0" || ccv === "") {
+            alert("Porfavor complete todos los campos!")
+        }
+
+    } else if (option2.checked) {
+
+        let bankNumber = document.getElementById("bankNumber").value;
+        let bankName = document.getElementById("bankName").value;
+
+        if (bankNumber === "" || bankName === "") {
+            alert("Porfavor complete todos los campos!")
+        }
+
+    }else{
+
+        alert("Selecciones metodo de pago");
+    }
+
+}
+
 const purchBtn = () => {
 
     let delivery = document.getElementById("select_delivery").value;
@@ -242,21 +321,11 @@ const purchBtn = () => {
 
 
     if (delivery === "0" || street === "" || country === "" || numberHouse === "" || corner === "") {
-        alert("uno esta vacio");
+        alert("Porfavor rellene todos los campos");
     } else {
-        alert("exito");
+        alert("Gracias por su compra, se le enviara un correo a la brevedad");
+        document.getElementById("send").reset();
     }
-
-    // document.getElementById("all").reset();
-
-}
-
-const btnModal = () =>{
-    let cardNumber = document.getElementById("cardNumber").value;
-    let cardName = document.getElementById("cardName").value;
-    let mounth = document.getElementById("selectMes").value;
-    let year = document.getElementById("selectYear").value;
-    let ccv = document.getElementById("ccv").value;
 
 }
 
@@ -298,6 +367,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
             purchBtn();
 
         })
+
+        document.getElementById("successBtn").addEventListener("click", () => {
+
+            btnModalOk();
+
+        })
+
+        
 
         // for (let i = 1; i <= 12; i++) {
 

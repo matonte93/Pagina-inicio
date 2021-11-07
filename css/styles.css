@@ -394,3 +394,14 @@ text-align: center;
 #myModal label{
   padding-top: 10px;
 }
+
+input[type="number"]
+{
+    -webkit-appearance: textfield !important;
+    margin: 0;
+    -moz-appearance:textfield !important;
+}
+
+hr{
+  background-color: #212529;
+}
