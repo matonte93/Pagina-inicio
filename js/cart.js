@@ -121,11 +121,21 @@ const printCart = (objectCart) => {
 
     body.innerHTML = htmltocontentAppen;
 
+    document.getElementById("numberHouse").addEventListener("keyup", (e) => {
+
+        let valueBankNumber = e.target.value;
+
+        document.getElementById("numberHouse").value = valueBankNumber.replace(/\s/g, "")
+        .replace(/\D/g, "")
+        .trim(); 
+
+    });
+
 
 }
 
 //Calculo tanto el sub total, como el envio y el total
-const cart = (products) => {
+const cartTotal = (products) => {
 
     let count = document.getElementById("numbercount").value;
     let totalLabel = document.getElementById("Total");
@@ -248,6 +258,16 @@ const methodPurch = () => {
         <hr>
         `
         methodDiv.innerHTML = htmltocontentAppen;
+
+        document.getElementById("bankNumber").addEventListener("keyup", (e) => {
+
+            let valueBankNumber = e.target.value;
+   
+            document.getElementById("bankNumber").value = valueBankNumber.replace(/\s/g, "")
+            .replace(/\D/g, "")
+            .trim(); 
+
+        });
     }
 
 }
@@ -278,6 +298,7 @@ const mounths = () => {
     }
 }
 
+//Le damos funcionalidad al boton Success del modal
 const btnModalOk = () => {
 
     let option1 = document.getElementById("credit");
@@ -291,8 +312,10 @@ const btnModalOk = () => {
         let selectYear = document.getElementById("selectYear").value;
         let ccv = document.getElementById("ccv").value;
 
-        if (cardNumber === "" || cardName === "" || selectMes === "0" || selectYear === "0" || ccv === "") {
-            alert("Porfavor complete todos los campos!")
+        if ((cardNumber === "" || cardNumber.length < 19) || cardName === "" || selectMes === "0" || selectYear === "0" || (ccv === "" || ccv.length < 3)) {
+            alert("Campos vacíos y/o inválidos!")
+        }else{
+            alert("Funciona!")
         }
 
     } else if (option2.checked) {
@@ -300,8 +323,11 @@ const btnModalOk = () => {
         let bankNumber = document.getElementById("bankNumber").value;
         let bankName = document.getElementById("bankName").value;
 
-        if (bankNumber === "" || bankName === "") {
+        if ((bankNumber === "" || bankNumber.length < 9 ) || bankName === "") {
             alert("Porfavor complete todos los campos!")
+        }else{
+
+            alert("Funciona")
         }
 
     }else{
@@ -311,6 +337,7 @@ const btnModalOk = () => {
 
 }
 
+//Le damos funcionalidad al botón de comprar
 const purchBtn = () => {
 
     let delivery = document.getElementById("select_delivery").value;
@@ -339,20 +366,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
             hideSpinner();
             printCart(cartProducts);
 
-            cart(cartProducts)
+            cartTotal(cartProducts)
             methodPurch();
 
         }
 
         document.getElementById("numbercount").addEventListener("click", () => {
 
-            cart(cartProducts);
+            cartTotal(cartProducts);
 
         })
 
         document.getElementById("select_delivery").addEventListener("click", () => {
 
-            cart(cartProducts);
+            cartTotal(cartProducts);
         })
 
 
@@ -374,15 +401,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
         })
 
-        
 
-        // for (let i = 1; i <= 12; i++) {
-
-        //     let option = document.createElement("option");
-        //     option.value = i;
-        //     option.innerText = i;
-        //     formMetod.selectMes.appendChild(option);
-        // }
     });
 
 
