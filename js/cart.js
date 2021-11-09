@@ -1,6 +1,7 @@
 "use strict";
 
 let cartProducts = [];
+let info = true;
 
 //Carrito
 const printCart = (objectCart) => {
@@ -75,13 +76,13 @@ const printCart = (objectCart) => {
     
     <br>
     <br>
-    <label id="country"><strong>Pais: </strong><input type="text" id="countryinput" style="width : 90px" requiered></label>
+    <label id="country"><strong>Pais: </strong><input type="text" id="countryinput" style="width : 90px" maxlength="15" requiered></label>
     <br>
-    <label id="street"><strong>Calle: </strong><input type="text" id="streetinput" style="width : 90px" requiered></label>
+    <label id="street"><strong>Calle: </strong><input type="text" id="streetinput" style="width : 90px" maxlength="15" requiered></label>
     <br>
-    <label id="numberHouse"><strong>Número: </strong><input type="text" id="numberinput" style="width : 90px" requiered></label>
+    <label id="numberHouse"><strong>Número: </strong><input type="text" id="numberInput" style="width : 90px" maxlength="6" requiered></label>
     <br>
-    <label id="corner"><strong>Esquina: </strong><input type="text" id="cornerinput" style="width : 90px" requiered></label>
+    <label id="corner"><strong>Esquina: </strong><input type="text" id="cornerinput" style="width : 90px" maxlength="15" requiered></label>
   </div>
   
   </form>
@@ -125,9 +126,9 @@ const printCart = (objectCart) => {
 
         let valueBankNumber = e.target.value;
 
-        document.getElementById("numberHouse").value = valueBankNumber.replace(/\s/g, "")
-        .replace(/\D/g, "")
-        .trim(); 
+        document.getElementById("numberInput").value = valueBankNumber.replace(/\s/g, "")
+            .replace(/\D/g, "")
+            .trim();
 
     });
 
@@ -175,7 +176,7 @@ const methodPurch = () => {
 
     if (option1.checked) {
 
-        
+
         methodDiv.innerHTML = "";
         htmltocontentAppen += `
         
@@ -186,8 +187,13 @@ const methodPurch = () => {
         <label><strong>Nombre Titular: </strong></label>
         <input type="text" id="cardName" maxlength="19" autocomplete="off">
         <br>
-        <label style="text-decoration: solid"><strong>Vencimiento: </strong></label>
 
+        <label><strong>Apellidos: </strong></label>
+        <input type="text" id="cardLastName" maxlength="19" autocomplete="off">
+        <br>
+    
+        <label style="text-decoration: solid"><strong>Vencimiento: </strong></label>
+        
         <div class="mounthYear">
         <label>Mes</label>
         
@@ -214,28 +220,28 @@ const methodPurch = () => {
         document.getElementById("cardNumber").addEventListener("keyup", (e) => {
 
             let valueCardNumber = e.target.value;
-   
+
             document.getElementById("cardNumber").value = valueCardNumber.replace(/\s/g, "")
-            .replace(/\D/g, "")
-            .replace(/([0-9]{4})/g, "$1 ")
-            .trim(); 
+                .replace(/\D/g, "")
+                .replace(/([0-9]{4})/g, "$1 ")
+                .trim();
 
         });
 
-        document.getElementById("cardName").addEventListener("keyup", (e) =>{
+        document.getElementById("cardName").addEventListener("keyup", (e) => {
 
             let valueCardName = e.target.value;
             document.getElementById("cardName").value = valueCardName
-            .replace(/[0-9]/g, "");
+                .replace(/[0-9]/g, "");
         });
 
         document.getElementById("ccv").addEventListener("keyup", (e) => {
 
             let valueCCV = e.target.value;
-   
+
             document.getElementById("ccv").value = valueCCV.replace(/\s/g, "")
-            .replace(/\D/g, "")
-            .trim(); 
+                .replace(/\D/g, "")
+                .trim();
 
         });
 
@@ -252,8 +258,11 @@ const methodPurch = () => {
         <label><strong>Nro. de Cuenta: </strong></label>
         <input type="text" id="bankNumber" maxlength="12" autocomplete="off" requiered> 
         <br>
-        <label><strong>Banco</strong></label>
+        <label><strong>Nombre Banco:</strong></label>
         <input type="text" id="bankName" maxlength="12" autocomplete="off" requiered> 
+        </div>
+        <label><strong>N° de sucursal;</strong></label>
+        <input style="width: 10%" type="text" id="branchNumber" maxlength="4" autocomplete="off" requiered> 
         </div>
         <hr>
         `
@@ -262,10 +271,20 @@ const methodPurch = () => {
         document.getElementById("bankNumber").addEventListener("keyup", (e) => {
 
             let valueBankNumber = e.target.value;
-   
+
             document.getElementById("bankNumber").value = valueBankNumber.replace(/\s/g, "")
-            .replace(/\D/g, "")
-            .trim(); 
+                .replace(/\D/g, "")
+                .trim();
+
+        });
+
+        document.getElementById("branchNumber").addEventListener("keyup", (e) => {
+
+            let valueBranch = e.target.value;
+
+            document.getElementById("branchNumber").value = valueBranch.replace(/\s/g, "")
+                .replace(/\D/g, "")
+                .trim();
 
         });
     }
@@ -284,7 +303,7 @@ const years = () => {
     }
 
 }
- 
+
 //Mes de vencimiento de tarjeta
 const mounths = () => {
 
@@ -298,41 +317,131 @@ const mounths = () => {
     }
 }
 
+const validationDelivery =() =>{
+
+    let delivery = document.getElementById("select_delivery").value;
+    let country = document.getElementById("countryinput").value;
+    let street = document.getElementById("streetinput").value;
+    let numberHouse = document.getElementById("numberInput").value;
+    let corner = document.getElementById("cornerinput").value;
+
+    if (delivery === "0") {
+        alert("Porfavor selecciones metodo de envío!");
+        document.getElementById("select_delivery").focus();
+        info = false;
+    } else if (country === "") {
+        alert("Ingrese país!");
+        document.getElementById("countryinput").focus();
+        info = false;
+        
+    } else if (street === "") {
+        alert("Ingrese calle del destino!");
+        document.getElementById("streetinput").focus();
+        info = false;
+    } else if (numberHouse === "") {
+        alert("Ingrese número de casa/apto.!");
+        document.getElementById("numberinput").focus();
+        info = false;
+    } else if (corner === "") {
+        alert("Ingrese esquina!");
+        document.getElementById("cornerinput").focus();
+        info = false;
+    }else{
+        alert("Gracias por su compra, se le enviara un correo a la brevedad!")
+       document.getElementById("send").reset();
+    }
+
+}
+
+const validationCard = () => {
+
+
+    var expRegLastName = /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;
+
+    let cardNumber = document.getElementById("cardNumber").value;
+    let cardName = document.getElementById("cardName").value;
+    let cardLastName = document.getElementById("cardLastName").value;
+    let selectMes = document.getElementById("selectMes").value;
+    let selectYear = document.getElementById("selectYear").value;
+    let ccv = document.getElementById("ccv").value;
+
+    if ((cardNumber === "" || cardNumber.length < 19)) {
+        alert("Ingrese número o verifique el actual!");
+        document.getElementById("cardNumber").focus();
+        info = false;
+    } else if (cardName === "") {
+        alert("Ingrese nombre del titular!");
+        document.getElementById("cardName").focus();
+        info = false;
+    } else if (cardLastName === "" || !expRegLastName.exec(cardLastName)) {
+        alert("Ingrese apellidos del titular!");
+        document.getElementById("cardLastName").focus();
+        info = false;
+    } else if (selectMes === "0") {
+        alert("Seleccione mes de vencimiento!");
+        info = false;
+        document.getElementById("selectMes").focus();
+    } else if (selectYear === "0") {
+        alert("Seleccione año de vencimiento!");
+        info = false;
+        document.getElementById("selectYear").focus();
+    } else if (ccv === "" || ccv.length < 3) {
+        alert("Ingrese código de seguridad o verifique el actual!");
+        document.getElementById("ccv").focus()
+        info = false;;
+    }
+
+}
+
+const validationBank = () => {
+
+    let bankNumber = document.getElementById("bankNumber").value;
+    let bankName = document.getElementById("bankName").value;
+    let branchNumber = document.getElementById("branchNumber").value;
+
+    if ((bankNumber === "" || bankNumber.length < 9)) {
+        alert("Porfavor ingrese número de cuenta válido!");
+        document.getElementById("bankNumber").focus();
+        info = false;
+    } else if (bankName === "" || bankName.length <= 4) {
+        alert("Porfavor ingrese el nombre del banco!");
+        document.getElementById("bankName").focus();
+        info = false;
+    } else if (branchNumber === "") {
+        alert("Porfavor ingrese número de sucursal!");
+        document.getElementById("branchNumber").focus();
+        info = false;
+    }
+
+
+}
 //Le damos funcionalidad al boton Success del modal
 const btnModalOk = () => {
 
+    info = true;
     let option1 = document.getElementById("credit");
     let option2 = document.getElementById("bank");
 
+
     if (option1.checked) {
 
-        let cardNumber = document.getElementById("cardNumber").value;
-        let cardName = document.getElementById("cardName").value;
-        let selectMes = document.getElementById("selectMes").value;
-        let selectYear = document.getElementById("selectYear").value;
-        let ccv = document.getElementById("ccv").value;
+        validationCard();
 
-        if ((cardNumber === "" || cardNumber.length < 19) || cardName === "" || selectMes === "0" || selectYear === "0" || (ccv === "" || ccv.length < 3)) {
-            alert("Campos vacíos y/o inválidos!")
-        }else{
-            alert("Funciona!")
+        if (info) {
+            $('#myModal').modal('toggle');
         }
 
     } else if (option2.checked) {
 
-        let bankNumber = document.getElementById("bankNumber").value;
-        let bankName = document.getElementById("bankName").value;
+        validationBank();
 
-        if ((bankNumber === "" || bankNumber.length < 9 ) || bankName === "") {
-            alert("Porfavor complete todos los campos!")
-        }else{
+        if (info) {
 
-            alert("Funciona")
+            $('#myModal').modal('toggle');
         }
 
-    }else{
-
-        alert("Selecciones metodo de pago");
+    } else {
+        alert("Selecciones metodo de pago!");
     }
 
 }
@@ -340,19 +449,25 @@ const btnModalOk = () => {
 //Le damos funcionalidad al botón de comprar
 const purchBtn = () => {
 
-    let delivery = document.getElementById("select_delivery").value;
-    let country = document.getElementById("countryinput").value;
-    let street = document.getElementById("streetinput").value;
-    let numberHouse = document.getElementById("numberinput").value;
-    let corner = document.getElementById("cornerinput").value;
+    info = true;
+    let option1 = document.getElementById("credit");
+    let option2 = document.getElementById("bank");
+    
 
+    if (!option1.checked && !option2.checked) {
+        alert("Elija metodo de pago!")
 
-    if (delivery === "0" || street === "" || country === "" || numberHouse === "" || corner === "") {
-        alert("Porfavor rellene todos los campos");
-    } else {
-        alert("Gracias por su compra, se le enviara un correo a la brevedad");
-        document.getElementById("send").reset();
-    }
+    } else if (option1.checked) {
+
+        validationCard();
+        validationDelivery();
+
+    } else if (option2.checked) {
+
+        validationBank();
+        validationDelivery();
+
+    } 
 
 }
 
