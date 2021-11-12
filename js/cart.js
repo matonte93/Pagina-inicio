@@ -2,6 +2,7 @@
 
 let cartProducts = [];
 let info = true;
+let info2 = false;
 
 //Carrito
 const printCart = (objectCart) => {
@@ -317,7 +318,7 @@ const mounths = () => {
     }
 }
 
-const validationDelivery =() =>{
+const validationDelivery = () => {
 
     let delivery = document.getElementById("select_delivery").value;
     let country = document.getElementById("countryinput").value;
@@ -326,29 +327,103 @@ const validationDelivery =() =>{
     let corner = document.getElementById("cornerinput").value;
 
     if (delivery === "0") {
-        alert("Porfavor selecciones metodo de envío!");
+
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Porfavor selecciones metodo de envío!',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+
         document.getElementById("select_delivery").focus();
         info = false;
     } else if (country === "") {
-        alert("Ingrese país!");
+
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Ingrese país!',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+
         document.getElementById("countryinput").focus();
         info = false;
-        
+
     } else if (street === "") {
-        alert("Ingrese calle del destino!");
+
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Ingrese calle del destino!',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+
         document.getElementById("streetinput").focus();
         info = false;
     } else if (numberHouse === "") {
-        alert("Ingrese número de casa/apto.!");
+
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Ingrese número de casa/apto.!',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+
         document.getElementById("numberinput").focus();
         info = false;
     } else if (corner === "") {
-        alert("Ingrese esquina!");
+
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Ingrese esquina!',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+
         document.getElementById("cornerinput").focus();
         info = false;
-    }else{
-        alert("Gracias por su compra, se le enviara un correo a la brevedad!")
-       document.getElementById("send").reset();
+    } else {
+        Swal.fire({
+            title: 'Éxito!',
+            text: 'Gracias por su compra, se le enviara un correo a la brevedad!',
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+            width: '50%'
+        });
+        // alert("Gracias por su compra, se le enviara un correo a la brevedad!")
+        document.getElementById("send").reset();
+        document.getElementById("formPurch").reset();
+        document.getElementById("infoPurch").innerHTML = "";
     }
 
 }
@@ -366,53 +441,181 @@ const validationCard = () => {
     let ccv = document.getElementById("ccv").value;
 
     if ((cardNumber === "" || cardNumber.length < 19)) {
-        alert("Ingrese número o verifique el actual!");
+
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Número de tarjeta inválido!',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+
         document.getElementById("cardNumber").focus();
         info = false;
     } else if (cardName === "") {
-        alert("Ingrese nombre del titular!");
+
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Nombre de tarjeta inválido!',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+
         document.getElementById("cardName").focus();
         info = false;
     } else if (cardLastName === "" || !expRegLastName.exec(cardLastName)) {
-        alert("Ingrese apellidos del titular!");
+
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Apellido/s de tarjeta inválido!',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+
         document.getElementById("cardLastName").focus();
         info = false;
     } else if (selectMes === "0") {
-        alert("Seleccione mes de vencimiento!");
+
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Seleccione mes de vencimiento!',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+
         info = false;
         document.getElementById("selectMes").focus();
     } else if (selectYear === "0") {
-        alert("Seleccione año de vencimiento!");
-        info = false;
-        document.getElementById("selectYear").focus();
-    } else if (ccv === "" || ccv.length < 3) {
-        alert("Ingrese código de seguridad o verifique el actual!");
-        document.getElementById("ccv").focus()
-        info = false;;
-    }
 
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Seleccione año de vencimiento!',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+
+
+        document.getElementById("selectYear").focus();
+        info = false;
+
+    } else if (ccv === "" || ccv.length < 3) {
+
+        Swal.fire({
+            title: 'Atención!',
+            text: 'CCV Inválido!',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+
+        document.getElementById("ccv").focus();
+        info = false;
+
+    } else if (info2 === false) {
+
+        validationDelivery();
+
+    }
 }
 
 const validationBank = () => {
+
 
     let bankNumber = document.getElementById("bankNumber").value;
     let bankName = document.getElementById("bankName").value;
     let branchNumber = document.getElementById("branchNumber").value;
 
     if ((bankNumber === "" || bankNumber.length < 9)) {
-        alert("Porfavor ingrese número de cuenta válido!");
+
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Porfavor ingrese número de cuenta válido!',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+
         document.getElementById("bankNumber").focus();
         info = false;
     } else if (bankName === "" || bankName.length <= 4) {
-        alert("Porfavor ingrese el nombre del banco!");
+
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Porfavor ingrese el nombre del banco!',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+
         document.getElementById("bankName").focus();
         info = false;
     } else if (branchNumber === "") {
-        alert("Porfavor ingrese número de sucursal!");
+
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Porfavor ingrese número de sucursal!',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+
         document.getElementById("branchNumber").focus();
         info = false;
-    }
 
+    } else if (info2 === false) {
+
+        validationDelivery();
+
+    }
 
 }
 //Le damos funcionalidad al boton Success del modal
@@ -425,24 +628,43 @@ const btnModalOk = () => {
 
     if (option1.checked) {
 
+        info2 = true;
         validationCard();
 
         if (info) {
             $('#myModal').modal('toggle');
+
         }
 
     } else if (option2.checked) {
+
+        info2 = true;
 
         validationBank();
 
         if (info) {
 
             $('#myModal').modal('toggle');
+
         }
 
     } else {
-        alert("Selecciones metodo de pago!");
+
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Elija metodo de pago!',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+
     }
+
 
 }
 
@@ -450,24 +672,36 @@ const btnModalOk = () => {
 const purchBtn = () => {
 
     info = true;
+    info2 = false;
     let option1 = document.getElementById("credit");
     let option2 = document.getElementById("bank");
-    
+
 
     if (!option1.checked && !option2.checked) {
-        alert("Elija metodo de pago!")
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Elija metodo de pago!',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+
 
     } else if (option1.checked) {
 
         validationCard();
-        validationDelivery();
+
 
     } else if (option2.checked) {
 
         validationBank();
-        validationDelivery();
 
-    } 
+    }
 
 }
 
