@@ -70,9 +70,9 @@ const printCart = (objectCart) => {
 
     <select name="delivery" id="select_delivery" requiered>
     <option value="0" disabled selected>Ingresar opción</option>
-    <option value="0.05">Standar</option>
-     <option value="0.07">Express</option>
-    <option value="0.15">Premium</option>
+    <option value="0.05">Standar (12-15 días)</option>
+     <option value="0.07">Express (5-8 días)</option>
+    <option value="0.15">Premium (2-5 días)</option>
     </select>
     
     <br>
@@ -133,6 +133,12 @@ const printCart = (objectCart) => {
 
     });
 
+    document.getElementById("countryinput").addEventListener("keyup", (e) => {
+
+        let valueCountryInput = e.target.value;
+        document.getElementById("countryinput").value = valueCountryInput
+            .replace(/[0-9]/g, "");
+    });
 
 }
 
@@ -343,6 +349,7 @@ const validationDelivery = () => {
 
         document.getElementById("select_delivery").focus();
         info = false;
+        
     } else if (country === "") {
 
         Swal.fire({
@@ -378,6 +385,7 @@ const validationDelivery = () => {
 
         document.getElementById("streetinput").focus();
         info = false;
+
     } else if (numberHouse === "") {
 
         Swal.fire({
@@ -395,6 +403,7 @@ const validationDelivery = () => {
 
         document.getElementById("numberinput").focus();
         info = false;
+
     } else if (corner === "") {
 
         Swal.fire({
@@ -412,15 +421,17 @@ const validationDelivery = () => {
 
         document.getElementById("cornerinput").focus();
         info = false;
+
     } else {
+
         Swal.fire({
             title: 'Éxito!',
             text: 'Gracias por su compra, se le enviara un correo a la brevedad!',
             icon: 'success',
             confirmButtonText: 'Aceptar',
-            width: '50%'
+            width: '40%'
         });
-        // alert("Gracias por su compra, se le enviara un correo a la brevedad!")
+
         document.getElementById("send").reset();
         document.getElementById("formPurch").reset();
         document.getElementById("infoPurch").innerHTML = "";
