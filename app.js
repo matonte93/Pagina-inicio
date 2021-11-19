@@ -5,7 +5,7 @@ const port = 3000
 const prueba = ["hola","hola2, hola3"];
 
 
-app.use(express.static(__dirname + '/backend'));
+app.use(express.static('backend'));
 
 app.get("/prueba", (req, res) => {
   // res.send('Hola Mundoss')
