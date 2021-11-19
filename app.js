@@ -4,9 +4,10 @@ const port = 3000
 
 const prueba = ["hola","hola2, hola3"];
 
-const json = "/prueba";
 
-app.get(json, (req, res) => {
+app.use(express.static(__dirname + '/backend'));
+
+app.get("/prueba", (req, res) => {
   // res.send('Hola Mundoss')
   res.json(prueba);
 })
