@@ -2,22 +2,35 @@
 var product = {};
 
 //Funcion para mostrar las fotos en forma de galeria
-function ShowProductGallery(array) {
+function showProductGallery(array) {
 
-    let htmlContentToAppend = "";
+    let htmlContentToAppend =+ "";
 
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 1; i < array.length; i++) {
+        
         let image = array[i];
 
-        htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + image + `" alt="">
-            </div>
-        </div>
-        `
+        htmlContentToAppend = `
+    
+    <div class="carousel-item">
+      <img src="${image}" class="d-block w-100" alt="...">
+    </div>
+    
+    `
+        // for (let i = 0; i < array.length; i++) {
+        //     let image = array[i];
 
-        document.getElementById("gallery").innerHTML = htmlContentToAppend;
+        //     htmlContentToAppend += `
+        //     <div class="col-lg-3 col-md-4 col-6">
+        //         <div class="d-block mb-4 h-100">
+        //             <img class="img-fluid img-thumbnail" src="` + image + `" alt="">
+        //         </div>
+        //     </div>
+        //     `
+
+        document.getElementById("gallery").innerHTML += htmlContentToAppend;
+        // }
+
     }
 }
 
@@ -34,10 +47,10 @@ function ShowProductGallery(array) {
 
 //     `
 
-   
+
 
 //Funcion para cargar los comentarios desde el array
-function Showcomments(array) {
+function showComments(array) {
 
     let htmlContentToAppend = "";
     // let span = document.createElement("span");
@@ -100,9 +113,13 @@ const insertCommment = () => {
     document.getElementById("commentuser").value = "";
     document.getElementById("boxcomment").value = "";
 
+    if (user === "" || comment === "") {
+        alert("Campos Vacios!")
 
-    htmlContentToAppend += `
-      <div id="newComment" name="comments" class="comments">
+
+    } else {
+        htmlContentToAppend += `
+      <div id="newComment" tabindex="-1" name="comments" class="comments">
             <div>
                 <div class="col-3">
                 </div>
@@ -122,20 +139,25 @@ const insertCommment = () => {
          </div>
 
 `
-    for (i = 0; i < score; i++) {
-        htmlContentToAppend += `
+        for (i = 0; i < score; i++) {
+            htmlContentToAppend += `
         <span class="fa fa-star checked"></span>
         `
-    }
+        }
 
-    htmlContentToAppend += `
+        htmlContentToAppend += `
     <hr class="my-3">
     `
-    document.getElementById("commentdiv").innerHTML += htmlContentToAppend;
+        document.getElementById("commentdiv").innerHTML += htmlContentToAppend;
+        document.getElementById("newComment").scrollIntoView();
+        alert("Comentario ingresado con Éxito");
+    }
+
+
 }
 
 //Pre-cargo el nombre de usuario en el campo de usuario al ingrear el comentario
-const GetNameUser = () => {
+const getNameUser = () => {
 
     const user = localStorage.getItem("usu");
     document.getElementById("commentuser").value = user;
@@ -197,22 +219,24 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 
             //Muestro las imagenes en forma de galería
-            ShowProductGallery(product.images);
-            GetNameUser();
+            showProductGallery(product.images);
+            getNameUser();
         };
 
         getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj2) {
             if (resultObj2.status === "ok") {
-                
+
                 comments = resultObj2.data;
 
-                Showcomments(comments);
+                showComments(comments);
 
                 //Al hacer clicl en el boton enviar, ejecuta la funcion para insertar comentario
                 document.getElementById("BtnComment").addEventListener("click", function () {
 
                     insertCommment();
-                    document.getElementById("newComment").scrollIntoView();
+                    getNameUser();
+                    // document.getElementById("newComment").className += "target";
+                    // document.getElementById("").focus();
                 });
 
             }
@@ -226,6 +250,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
                 }
             });
+
 
         });
 

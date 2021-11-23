@@ -13,16 +13,16 @@ function saveModify() {
 
     if (email === "") {
 
-
+        alert("Complete todos los")
     } else if (name === "") {
-
+        alert("Complete todos los")
     } else if (lastName === "") {
 
-
+        alert("Complete todos los")
     } else if (age === "") {
-
+        alert("Complete todos los")
     } else if (numberPhone === "") {
-
+        alert("Complete todos los")
     } else {
 
         profileArr = {
@@ -54,6 +54,27 @@ function saveModify() {
 
 };
 
+const avatar = () => {
+
+    document.querySelector('#fileInput').addEventListener("change", function () {
+
+        const reader = new FileReader();
+
+        reader.addEventListener("load", () => {
+
+            localStorage.setItem("avatar", reader.result);
+
+            const avatarImg = localStorage.getItem("avatar");
+            document.querySelector('#imgPreview').setAttribute("src", avatarImg);
+
+        });
+        reader.readAsDataURL(this.files[0]);
+
+    });
+
+
+};
+
 function showModify() {
 
     let dateProfile = JSON.parse(localStorage.getItem("profile"));
@@ -63,7 +84,6 @@ function showModify() {
     let lastName = dateProfile.lastName;
     let age = dateProfile.age;
     let numberPhone = dateProfile.numberPhone;
-
 
     document.getElementById("inputEmail4").value = email;
     document.getElementById("inputName").value = name;
@@ -89,10 +109,17 @@ function completed() {
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
 
+    avatar();
+
+    if (localStorage.getItem("avatar")) {
+        const avatarImg = localStorage.getItem("avatar");
+        document.querySelector('#imgPreview').setAttribute("src", avatarImg);
+    }
+
     if (JSON.parse(localStorage.getItem("profile"))) {
 
         showModify();
-
+        avatar();
     } else {
 
         completed();

@@ -133,6 +133,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
         search(productosArray);
     });
 
+    document.getElementById("contents").addEventListener("click", () => {
+        search(productosArray);
+    });
+
     //Agregos los eventos correspondientes para darle funcionalidad a los botones de filtrado
     document.getElementById("ascen").addEventListener("click", () => {
         campo = "cost";

@@ -405,3 +405,12 @@ input[type="number"]
 hr{
   background-color: #212529;
 }
+
+.avatar{
+width: 50%;
+}
+
+#imgPreview{
+
+  width: 200px;
+}
