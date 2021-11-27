@@ -1,6 +1,7 @@
 "use strict";
 
-let profileArr;
+let profileObj;
+
 
 function saveModify() {
 
@@ -13,19 +14,73 @@ function saveModify() {
 
     if (email === "") {
 
-        alert("Complete todos los")
-    } else if (name === "") {
-        alert("Complete todos los")
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Campos Vacíos',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
+    } else if (name === "") {Swal.fire({
+        title: 'Atención!',
+        text: 'Campos Vacíos',
+        icon: 'warning',
+        confirmButtonText: 'Ok',
+        // width: '20%',
+        timer: 2000,
+        // backdrop: true,
+        // timerProgressBar: true,  
+        toast: true,
+        position: 'top'
+    });
     } else if (lastName === "") {
 
-        alert("Complete todos los")
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Campos Vacíos',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
     } else if (age === "") {
-        alert("Complete todos los")
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Campos Vacíos',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
     } else if (numberPhone === "") {
-        alert("Complete todos los")
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Campos Vacíos',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
     } else {
 
-        profileArr = {
+        profileObj = {
 
             email: `${email}`,
             name: `${name}`,
@@ -34,21 +89,23 @@ function saveModify() {
             numberPhone: `${numberPhone}`
         };
 
-        localStorage.setItem("profile", JSON.stringify(profileArr));
+        localStorage.setItem("profile", JSON.stringify(profileObj));
 
+        
         Swal.fire({
             title: 'Éxito!',
             text: 'Se han guardado los datos correctamente!',
             icon: 'success',
             confirmButtonText: 'Ok',
             width: '20%',
-            // timer: 5000,
+            timer: 5000,
             // backdrop: true,
             // timerProgressBar: true,  
-            // toast: true,
+            toast: true,
             position: 'top'
         });
 
+        setTimeout("",2000);
     }
 
 

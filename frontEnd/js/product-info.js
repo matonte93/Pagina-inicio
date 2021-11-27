@@ -114,7 +114,19 @@ const insertCommment = () => {
     document.getElementById("boxcomment").value = "";
 
     if (user === "" || comment === "") {
-        alert("Campos Vacios!")
+
+        Swal.fire({
+            title: 'Atención!',
+            text: 'Campos Vacíos',
+            icon: 'warning',
+            confirmButtonText: 'Ok',
+            // width: '20%',
+            timer: 2000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'top'
+        });
 
 
     } else {
@@ -149,8 +161,21 @@ const insertCommment = () => {
     <hr class="my-3">
     `
         document.getElementById("commentdiv").innerHTML += htmlContentToAppend;
+        
+        Swal.fire({
+            title: 'Éxito!',
+            text: 'Comentario ingresado con éxito!',
+            icon: 'success',
+            confirmButtonText: 'Ok',
+            width: '30%',
+            timer: 3000,
+            // backdrop: true,
+            // timerProgressBar: true,  
+            toast: true,
+            position: 'center'
+        });
+
         document.getElementById("newComment").scrollIntoView();
-        alert("Comentario ingresado con Éxito");
     }
 
 

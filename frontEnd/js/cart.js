@@ -349,7 +349,7 @@ const validationDelivery = () => {
 
         document.getElementById("select_delivery").focus();
         info = false;
-        
+
     } else if (country === "") {
 
         Swal.fire({
@@ -424,17 +424,38 @@ const validationDelivery = () => {
 
     } else {
 
-        Swal.fire({
-            title: 'Éxito!',
-            text: 'Gracias por su compra, se le enviara un correo a la brevedad!',
-            icon: 'success',
-            confirmButtonText: 'Aceptar',
-            width: '40%'
-        });
+        let count = document.getElementById("numbercount").value;
 
-        document.getElementById("send").reset();
-        document.getElementById("formPurch").reset();
-        document.getElementById("infoPurch").innerHTML = "";
+        if (count != 0) {
+
+            Swal.fire({
+                title: 'Éxito!',
+                text: 'Gracias por su compra, se le enviara un correo a la brevedad!',
+                icon: 'success',
+                confirmButtonText: 'Aceptar',
+                width: '40%'
+            });
+
+            document.getElementById("send").reset();
+            document.getElementById("formPurch").reset();
+            document.getElementById("infoPurch").innerHTML = "";
+            
+        }else{
+
+            Swal.fire({
+                title: 'Atención!',
+                text: 'La cantidad de los productos no puede ser nula!',
+                icon: 'warning',
+                confirmButtonText: 'Ok',
+                // width: '20%',
+                timer: 2000,
+                // backdrop: true,
+                // timerProgressBar: true,  
+                toast: true,
+                position: 'top'
+            });
+
+        }
     }
 
 }
@@ -731,13 +752,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
         }
 
-        document.getElementById("numbercount").addEventListener("click", () => {
+        document.getElementById("numbercount").addEventListener("change", () => {
 
             cartTotal(cartProducts);
 
         })
 
-        document.getElementById("select_delivery").addEventListener("click", () => {
+        document.getElementById("select_delivery").addEventListener("change", () => {
 
             cartTotal(cartProducts);
         })
