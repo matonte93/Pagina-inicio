@@ -38,7 +38,7 @@ const printCart = (objectCart) => {
                                         </figcaption>
                                     </figure>
                                 </td>
-                                <td> <input type="number" id="numbercount" value="${products.count}" step="1" max="20" min="1"> </td>
+                                <td> <input type="number" id="numbercount" value="${products.count}" step="1" max="20" min="1" pattern="^[0-9]+"> </td>
                                 <td>
                                     <div class="price-wrap"> <var class="price">${products.currency} ${products.unitCost}</var> </div>
                                 </td>
