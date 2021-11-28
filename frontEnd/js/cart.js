@@ -15,111 +15,49 @@ const printCart = (objectCart) => {
         htmltocontentAppen += `
         
        
-    <div class="row">
         <aside class="col-lg-9">
-            <div class="card back">
-                <div class="table-responsive">
-                    <table class="table table-borderless table-shopping-cart">
-                        <thead class="text-muted">
-                            <tr class="small text-uppercase">
-                                <th scope="col">Productos</th>
-                                <th scope="col" width="120">Cantidad</th>
-                                <th scope="col" width="120">Precio Unit.</th>
-                                <th scope="col" class="d-none d-md-block" width="200">Precio Total Unit.</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <figure class="itemside align-items-center">
-                                        <div class="aside"><img src="${products.src}" class="img-sm"></div>
-                                        <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">${products.name}</a>
-                                            <p class="text-muted small">Vendidos: ${products.count}</p>
-                                        </figcaption>
-                                    </figure>
-                                </td>
-                                <td> <input type="number" id="numbercount" value="${products.count}" step="1" max="20" min="1" pattern="^[0-9]+"> </td>
-                                <td>
-                                    <div class="price-wrap"> <var class="price">${products.currency} ${products.unitCost}</var> </div>
-                                </td>
-                                <td>
-                                <label id="total-unit">$ </label>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </aside>
-        <aside class="col-lg-3 back">
-            <div class="card mb-3">
-                <div style="padding-bottom : 0%" class="card-body">
+        <div class="card back">
+          <div class="table-responsive">
+            <table class="table table-borderless table-shopping-cart">
+              <thead class="text-muted">
+                <tr class="small text-uppercase">
+                  <th scope="col">Productos</th>
+                  <th scope="col" width="120">Cantidad</th>
+                  <th scope="col" width="120">Precio Unit.</th>
+                  <th scope="col" class="d-none d-md-block" width="200">Precio Total Unit.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <figure class="itemside align-items-center">
+                      <div class="aside"><img src="${products.src}" class="img-sm"></div>
+                      <figcaption class="info"> <a href="#" class="title text-dark"
+                          data-abc="true">${products.name}</a>
+                        <p class="text-muted small">Vendidos: ${products.count}</p>
+                      </figcaption>
+                    </figure>
+                  </td>
+                  <td> <input type="number" id="numbercount" value="${products.count}" step="1" max="20" min="1"
+                      pattern="^[0-9]+"> </td>
+                  <td>
+                    <div class="price-wrap"> <var class="price">${products.currency} ${products.unitCost}</var> </div>
+                  </td>
+                  <td>
+                    <label id="total-unit">$ </label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </aside>
               
-            
                     
     `
 
     }
 
-    htmltocontentAppen += `
-
-    <div class="form-group" > 
-    
-    <form id="send">
-    <label for="pet-select"><strong>Seleccionar metodo de envio:</strong></label>
-
-    <select name="delivery" id="select_delivery" requiered>
-    <option value="0" disabled selected>Ingresar opción</option>
-    <option value="0.05">Standar (12-15 días)</option>
-     <option value="0.07">Express (5-8 días)</option>
-    <option value="0.15">Premium (2-5 días)</option>
-    </select>
-    
-    <br>
-    <br>
-    <label id="country"><strong>Pais: </strong><input type="text" id="countryinput" style="width : 90px" maxlength="15" requiered></label>
-    <br>
-    <label id="street"><strong>Calle: </strong><input type="text" id="streetinput" style="width : 90px" maxlength="15" requiered></label>
-    <br>
-    <label id="numberHouse"><strong>Número: </strong><input type="text" id="numberInput" style="width : 90px" maxlength="6" requiered></label>
-    <br>
-    <label id="corner"><strong>Esquina: </strong><input type="text" id="cornerinput" style="width : 90px" maxlength="15" requiered></label>
-  </div>
-  
-  </form>
-  
-        <hr>
-        <div id="metodoPurch">
-    
-        <button class="btn btn-success" data-toggle="modal" data-target="#myModal">Metodo de pago</button>
-        
-        </div>
-    </div>
-
-
-
-<div class="card">
-    <div style="padding-top : 0%" class="card-body">
-    <hr>
-        <dl class="dlist-align">
-            <dt>SubTotal: </dt>
-            <dd class="text-right ml-3"><label id="subTotal"> </label></dd>
-        </dl>
-        <dl class="dlist-align">
-            <dt>Envio:</dt>
-            <dd class="text-right ml-3"><label id="delivery">$ 0.00 </label></dd>
-        </dl>
-        <dl class="dlist-align">
-            <dt>Total:</dt>
-            <dd class="text-right text-dark b ml-3"><strong><label id="Total">$ 0.00</label></strong></dd>
-        </dl>
-         <button id="purchBtn" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Comprar</button>
-    </div>
-</div>
-</aside>
-
- 
-`
 
     body.innerHTML = htmltocontentAppen;
 
@@ -150,6 +88,7 @@ const cartTotal = (products) => {
     let subTotal = document.getElementById("subTotal");
 
     for (let object of products.articles) {
+        let index   
         let unitCost = object.unitCost;
 
         let send = document.getElementById("delivery");
